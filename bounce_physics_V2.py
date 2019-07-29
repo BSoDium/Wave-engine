@@ -15,7 +15,7 @@ loadPrcFileData('','window-title SomeFunnyShit')
 
 MAINDIR = Filename.from_os_specific(os.getcwd())
 RIGIDCONST=1.2
-TIMESCALE=0.005
+TIMESCALE=0.00005
 FRICTIONCONST=0.99
 GLOBALSCALE=2
 BLOCKINTERVAL=0.06
@@ -67,7 +67,7 @@ class PhysicalArray:
         for x in range(len(self.BufferData)):
             for y in range(len(self.BufferData[x])):
                 self.content[x][y].model.setPos(self.BufferData[x][y])
-                return None
+        return None
     
     def get_next_pos(self,Force,id): # id must be tuple
         i,j=id[0],id[1]
@@ -84,17 +84,24 @@ class PhysicalArray:
                      (i+1,j)]
         centralPos=content[i][j].model.getPos() # centralPos is the position of the central block
         ResultingForce=0
-        for x in ScanList:
+        for x,y in ScanList:
             try:
-                bufferPos = content[x[0]][x[1]].model.getPos()
-                dist = (bufferPos-centralPos).lenght() # now we know the distance of the central block to the scanned one
+                assert x > 0 # prevents the list from reading negative x and y values ( when facing edge effects)
+                assert y > 0
+                bufferPos = content[x][y].model.getPos()
+                # calculating the distance between central and scanned object
+                vec = list( bufferPos - centralPos )
+                for u in range(3):
+                    vec[u] = round(float(str(vec[u])[:6])*100)/100   # here it goes
+                dist = sqrt(vec[0]**2 + vec[1]**2 + vec[2]**2)
+                # ----
                 alpha = asin(BLOCKINTERVAL*GLOBALSCALE/dist) # angle between Z axis and block to block link
                 GlobalForce = RIGIDCONST*(dist-BLOCKINTERVAL*GLOBALSCALE) # basically F=k*(l-l0)
                 ZForce = GlobalForce*cos(alpha) # projection over Z axis (on ignore les forces sur les axes X et Y)
                 ResultingForce+=ZForce
             except: # if the neighbor does not exist (the block is on an edge), then act as if there was a stable block connected to it
-                temp = (x[0]-i,x[1]-j) # get an idea of the position in the array
-                bufferPos = LPoint3f(centralPos[0]+temp[0]*BLOCKINTERVAL*GLOBALSCALE,centralPos[1]+temp[1]*BLOCKINTERVAL*GLOBALSCALE,0) # not completely accurate: instead of taking a different cube, I use the same one as anchor
+                temp = (x-i,y-j) # get an idea of the position in the array
+                bufferPos = LPoint3f(centralPos[0]+temp[0]*BLOCKINTERVAL*GLOBALSCALE,centralPos[1]+temp[1]*BLOCKINTERVAL*GLOBALSCALE,0) 
                 #dist = (bufferPos - centralPos).length() # we can't use the command .length() because of round errors
                 '''
                 at this point I had some trouble making things work because python would take panda3d's data as enormous floats, instead of
@@ -102,8 +109,8 @@ class PhysicalArray:
                 aprox system.
                 '''
                 vec = list( bufferPos - centralPos )
-                for x in range(3):
-                    vec[x] = round(float(str(vec[x])[:6])*100)/100   # here it goes
+                for u in range(3):
+                    vec[u] = round(float(str(vec[u])[:6])*100)/100   # here it goes
                 dist = sqrt(vec[0]**2 + vec[1]**2 + vec[2]**2)
                 alpha = asin(BLOCKINTERVAL*GLOBALSCALE/dist)
                 GlobalForce = RIGIDCONST*(dist-BLOCKINTERVAL*GLOBALSCALE)
@@ -144,10 +151,10 @@ class MainApp(ShowBase):
         super().__init__(self)
 
         # vars
-        self.ground = PhysicalArray(20,20,True)
-        #self.ground.single_override(19,19,-1) # max is 20-1=19 (depends on the PhysicalArray definition)
+        self.ground = PhysicalArray(21,21,True)
+        self.ground.single_override(10,10,-1) # max is 21-1=20 (depends on the PhysicalArray definition)
         #self.ground.column_override(2,-1)
-        self.ground.line_override(0,-1)
+        #self.ground.line_override(0,-1)
         
         # key bindings
         self.accept('escape',sys.exit,[0])
