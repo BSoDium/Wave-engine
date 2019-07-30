@@ -24,7 +24,7 @@ if adv_Gfx:
 MAINDIR = Filename.from_os_specific(os.getcwd())
 RIGIDCONST=5
 TIMESCALE=0.01
-FRICTIONCONST=0.98 # 0.98 = pâte à pizza, 0.90 = slow mo kevlar, 0.99 is too high, there is a major risk of structural instability
+FRICTIONCONST=0.98 # 0.98 = Pizza dough, 0.90 = slow mo kevlar, 0.99 is too high, there is a major risk of structural instability
 GLOBALSCALE=3
 BLOCKINTERVAL=0.06
 GLOBALMASS=0.1 # kg USI
