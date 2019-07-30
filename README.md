@@ -5,3 +5,5 @@ Just read the code, why would I explain stuff inside a readme ? That's not even 
 
 
 ![](WaveSim_screenshot01.png)
+![](WaveSim_screenshot02.png)
+![](WaveSim_screenshot03.png)
