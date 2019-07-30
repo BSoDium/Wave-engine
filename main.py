@@ -24,9 +24,10 @@ which means we can make the calculations a bit easier as if all particles on the
 '''
 MAINDIR=Filename.from_os_specific(os.getcwd())
 
+# MAIN PARAMETERS -- CHANGE THOSE TO MODIFY THE WAVE
 AMPLITUDE=0.1
-PULSE=4
-PHASE_SHIFT=3
+PULSE=4        # in this case, equals to the speed of displacement of the wave
+PHASE_SHIFT=4
 
 
 class wave:
@@ -86,7 +87,7 @@ class MainApp(ShowBase):
         render.setAntialias(AntialiasAttrib.MAuto)
 
         # camera
-        self.cam.setPos(LPoint3f(12.9715, -7.79632, 3.11914)) # données empiriques
+        self.cam.setPos(LPoint3f(12.9715, -7.79632, 3.11914)) # donnees empiriques
         self.cam.setHpr(LVecBase3f(45.6769, -16.8087, 6.02517)) # idem
 
         # background

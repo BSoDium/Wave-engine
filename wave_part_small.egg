@@ -3,9 +3,9 @@
   <Scalar> diffr { 1.000000 }
   <Scalar> diffg { 1.000000 }
   <Scalar> diffb { 1.000000 }
-  <Scalar> specr { 0.621993 }
-  <Scalar> specg { 0.621993 }
-  <Scalar> specb { 0.621993 }
+  <Scalar> specr { 0.000000 }
+  <Scalar> specg { 0.000000 }
+  <Scalar> specb { 0.000000 }
   <Scalar> shininess { 12.5 }
   <Scalar> ambr { 1.000000 }
   <Scalar> ambg { 1.000000 }
