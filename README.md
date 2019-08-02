@@ -1,6 +1,10 @@
 # Wave-simulator
 A panda3d based wave-motion particle simulator in python.<br>
-Customizable physical variables:<br>
+
+### Installing
+The only required library is panda3d (all other libs used are included by default in the python installer package
+In order to install it, type ```pip install panda``` in the windows command prompt, or install the SDK from [the panda3d webpage](panda3d.org)
+Customizable physical variables inside the code:<br>
 ```
 MAINDIR = Filename.from_os_specific(os.getcwd())
 RIGIDCONST=5
