@@ -1,8 +1,8 @@
 <CoordinateSystem> { Z-up } 
-<Material> Material.001 {
-  <Scalar> diffr { 0.938344 }
-  <Scalar> diffg { 1.000000 }
-  <Scalar> diffb { 0.082636 }
+<Material> Material.002 {
+  <Scalar> diffr { 0.016633 }
+  <Scalar> diffg { 0.016633 }
+  <Scalar> diffb { 0.016633 }
   <Scalar> specr { 0.500000 }
   <Scalar> specg { 0.500000 }
   <Scalar> specb { 0.500000 }
@@ -10,9 +10,9 @@
   <Scalar> ambr { 1.000000 }
   <Scalar> ambg { 1.000000 }
   <Scalar> ambb { 1.000000 }
-  <Scalar> emitr { 1.004028 }
-  <Scalar> emitg { 1.070000 }
-  <Scalar> emitb { 0.088421 }
+  <Scalar> emitr { 0.009980 }
+  <Scalar> emitg { 0.009980 }
+  <Scalar> emitb { 0.009980 }
 }
 
 <Material> Material {
@@ -31,6 +31,22 @@
   <Scalar> emitb { 0.000000 }
 }
 
+<Material> Material.001 {
+  <Scalar> diffr { 0.938344 }
+  <Scalar> diffg { 1.000000 }
+  <Scalar> diffb { 0.082636 }
+  <Scalar> specr { 0.500000 }
+  <Scalar> specg { 0.500000 }
+  <Scalar> specb { 0.500000 }
+  <Scalar> shininess { 12.5 }
+  <Scalar> ambr { 1.000000 }
+  <Scalar> ambg { 1.000000 }
+  <Scalar> ambb { 1.000000 }
+  <Scalar> emitr { 1.004028 }
+  <Scalar> emitg { 1.070000 }
+  <Scalar> emitb { 0.088421 }
+}
+
 <Material> Material.003 {
   <Scalar> diffr { 0.640000 }
   <Scalar> diffg { 0.640000 }
@@ -45,22 +61,6 @@
   <Scalar> emitr { 0.056000 }
   <Scalar> emitg { 0.056000 }
   <Scalar> emitb { 0.056000 }
-}
-
-<Material> Material.002 {
-  <Scalar> diffr { 0.016633 }
-  <Scalar> diffg { 0.016633 }
-  <Scalar> diffb { 0.016633 }
-  <Scalar> specr { 0.500000 }
-  <Scalar> specg { 0.500000 }
-  <Scalar> specb { 0.500000 }
-  <Scalar> shininess { 12.5 }
-  <Scalar> ambr { 1.000000 }
-  <Scalar> ambg { 1.000000 }
-  <Scalar> ambb { 1.000000 }
-  <Scalar> emitr { 0.009980 }
-  <Scalar> emitg { 0.009980 }
-  <Scalar> emitb { 0.009980 }
 }
 
   <Group> Icosphere {
@@ -2111,7 +2111,7 @@
       }
       <Vertex> 1017 {-0.133695 0.411480 -1.257024
       }
-      <Vertex> 1018 {-0.133695 0.411480 -1.257024
+      <Vertex> 1018 {-0.126661 0.389829 -1.284723
       }
       <Vertex> 1019 {-0.297750 0.216327 -1.293049
       }
@@ -2121,13 +2121,13 @@
       }
       <Vertex> 1022 {-0.297750 -0.216329 -1.293049
       }
-      <Vertex> 1023 {-0.133695 -0.411480 -1.257024
+      <Vertex> 1023 {-0.126661 -0.389829 -1.284723
       }
       <Vertex> 1024 {0.113733 -0.350025 -1.293050
       }
       <Vertex> 1025 {-0.133695 -0.411480 -1.257024
       }
-      <Vertex> 1026 {-0.133695 -0.411480 -1.257024
+      <Vertex> 1026 {-0.126661 -0.389829 -1.284723
       }
       <Vertex> 1027 {0.113733 -0.350025 -1.293050
       }
@@ -2177,7 +2177,7 @@
       }
       <Vertex> 1050 {-0.432658 -0.000000 -1.257022
       }
-      <Vertex> 1051 {-0.432658 -0.000000 -1.257022
+      <Vertex> 1051 {-0.409893 -0.000000 -1.284721
       }
       <Vertex> 1052 {-0.297750 -0.216329 -1.293049
       }
@@ -2269,7 +2269,7 @@
       }
       <Vertex> 1096 {0.350027 -0.254306 -1.257024
       }
-      <Vertex> 1097 {0.350027 -0.254306 -1.257024
+      <Vertex> 1097 {0.331610 -0.240926 -1.284723
       }
       <Vertex> 1098 {0.368040 -0.000001 -1.293049
       }
@@ -2279,7 +2279,7 @@
       }
       <Vertex> 1101 {0.113733 -0.350025 -1.293050
       }
-      <Vertex> 1102 {0.350027 -0.254306 -1.257024
+      <Vertex> 1102 {0.331610 -0.240926 -1.284723
       }
       <Vertex> 1103 {-0.432658 -0.000000 -1.257022
       }
@@ -2287,7 +2287,7 @@
       }
       <Vertex> 1105 {-0.297750 0.216327 -1.293049
       }
-      <Vertex> 1106 {-0.432658 -0.000000 -1.257022
+      <Vertex> 1106 {-0.409893 -0.000000 -1.284721
       }
       <Vertex> 1107 {-0.250510 -0.182007 -1.969872
       }
@@ -2335,7 +2335,7 @@
       }
       <Vertex> 1129 {0.350027 0.254306 -1.257024
       }
-      <Vertex> 1130 {0.350027 0.254306 -1.257024
+      <Vertex> 1130 {0.331610 0.240925 -1.284723
       }
       <Vertex> 1131 {0.113732 0.350026 -1.293050
       }
@@ -2613,7 +2613,7 @@
       }
       <Vertex> 1268 {0.368040 -0.000001 -1.293049
       }
-      <Vertex> 1269 {0.350027 0.254306 -1.257024
+      <Vertex> 1269 {0.331610 0.240925 -1.284723
       }
       <Vertex> 1270 {-0.416687 -0.003712 -1.518052
       }
@@ -2649,7 +2649,7 @@
       }
       <Vertex> 1286 {0.113732 0.350026 -1.293050
       }
-      <Vertex> 1287 {-0.133695 0.411480 -1.257024
+      <Vertex> 1287 {-0.126661 0.389829 -1.284723
       }
       <Vertex> 1288 {0.106405 0.338308 -1.554361
       }
@@ -2703,9 +2703,9 @@
       }
       <Vertex> 1313 {-0.297750 0.216327 -1.293049
       }
-      <Vertex> 1314 {-0.133695 0.411480 -1.257024
+      <Vertex> 1314 {-0.126661 0.389829 -1.284723
       }
-      <Vertex> 1315 {-0.134438 0.413767 -1.256178
+      <Vertex> 1315 {-0.127365 0.391996 -1.283921
       }
       <Vertex> 1316 {-0.299405 0.217530 -1.292403
       }
@@ -2717,19 +2717,19 @@
       }
       <Vertex> 1320 {-0.403539 -0.000000 -1.527704
       }
-      <Vertex> 1321 {-0.133695 -0.411480 -1.257024
+      <Vertex> 1321 {-0.126661 -0.389829 -1.284723
       }
       <Vertex> 1322 {-0.297750 -0.216329 -1.293049
       }
       <Vertex> 1323 {-0.299405 -0.217531 -1.292402
       }
-      <Vertex> 1324 {-0.134438 -0.413767 -1.256178
+      <Vertex> 1324 {-0.127365 -0.391996 -1.283921
       }
       <Vertex> 1325 {0.113733 -0.350025 -1.293050
       }
-      <Vertex> 1326 {-0.133695 -0.411480 -1.257024
+      <Vertex> 1326 {-0.126661 -0.389829 -1.284723
       }
-      <Vertex> 1327 {-0.134438 -0.413767 -1.256178
+      <Vertex> 1327 {-0.127365 -0.391996 -1.283921
       }
       <Vertex> 1328 {0.114365 -0.351970 -1.292403
       }
@@ -2767,9 +2767,9 @@
       }
       <Vertex> 1345 {0.113732 0.350026 -1.293050
       }
-      <Vertex> 1346 {0.350027 0.254306 -1.257024
+      <Vertex> 1346 {0.331610 0.240925 -1.284723
       }
-      <Vertex> 1347 {0.351972 0.255720 -1.256177
+      <Vertex> 1347 {0.333453 0.242265 -1.283921
       }
       <Vertex> 1348 {0.114364 0.351971 -1.292403
       }
@@ -2855,7 +2855,7 @@
       }
       <Vertex> 1389 {0.114364 0.351971 -1.292403
       }
-      <Vertex> 1390 {0.351972 0.255720 -1.256177
+      <Vertex> 1390 {0.333453 0.242265 -1.283921
       }
       <Vertex> 1391 {0.326470 0.237191 -1.527706
       }
@@ -2863,7 +2863,7 @@
       }
       <Vertex> 1393 {-0.299405 -0.217531 -1.292402
       }
-      <Vertex> 1394 {-0.435063 -0.000000 -1.256175
+      <Vertex> 1394 {-0.412171 -0.000000 -1.283919
       }
       <Vertex> 1395 {-0.403539 -0.000000 -1.527704
       }
@@ -2871,13 +2871,13 @@
       }
       <Vertex> 1397 {0.114365 -0.351970 -1.292403
       }
-      <Vertex> 1398 {-0.134438 -0.413767 -1.256178
+      <Vertex> 1398 {-0.127365 -0.391996 -1.283921
       }
       <Vertex> 1399 {-0.124697 -0.383786 -1.527706
       }
       <Vertex> 1400 {0.106079 -0.326468 -1.561307
       }
-      <Vertex> 1401 {-0.134438 -0.413767 -1.256178
+      <Vertex> 1401 {-0.127365 -0.391996 -1.283921
       }
       <Vertex> 1402 {-0.299405 -0.217531 -1.292402
       }
@@ -2885,7 +2885,7 @@
       }
       <Vertex> 1404 {-0.124697 -0.383786 -1.527706
       }
-      <Vertex> 1405 {0.351972 -0.255720 -1.256177
+      <Vertex> 1405 {0.333453 -0.242265 -1.283921
       }
       <Vertex> 1406 {0.114365 -0.351970 -1.292403
       }
@@ -2895,13 +2895,13 @@
       }
       <Vertex> 1409 {0.370086 -0.000001 -1.292402
       }
-      <Vertex> 1410 {0.351972 -0.255720 -1.256177
+      <Vertex> 1410 {0.333453 -0.242265 -1.283921
       }
       <Vertex> 1411 {0.326470 -0.237191 -1.527706
       }
       <Vertex> 1412 {0.343271 -0.000001 -1.561306
       }
-      <Vertex> 1413 {-0.134438 0.413767 -1.256178
+      <Vertex> 1413 {-0.127365 0.391996 -1.283921
       }
       <Vertex> 1414 {0.114364 0.351971 -1.292403
       }
@@ -2911,13 +2911,13 @@
       }
       <Vertex> 1417 {-0.299405 0.217530 -1.292403
       }
-      <Vertex> 1418 {-0.134438 0.413767 -1.256178
+      <Vertex> 1418 {-0.127365 0.391996 -1.283921
       }
       <Vertex> 1419 {-0.124697 0.383786 -1.527706
       }
       <Vertex> 1420 {-0.277711 0.201768 -1.561307
       }
-      <Vertex> 1421 {0.351972 0.255720 -1.256177
+      <Vertex> 1421 {0.333453 0.242265 -1.283921
       }
       <Vertex> 1422 {0.370086 -0.000001 -1.292402
       }
@@ -2925,7 +2925,7 @@
       }
       <Vertex> 1424 {0.326470 0.237191 -1.527706
       }
-      <Vertex> 1425 {-0.435063 -0.000000 -1.256175
+      <Vertex> 1425 {-0.412171 -0.000000 -1.283919
       }
       <Vertex> 1426 {-0.299405 0.217530 -1.292403
       }
@@ -2933,13 +2933,13 @@
       }
       <Vertex> 1428 {-0.403539 -0.000000 -1.527704
       }
-      <Vertex> 1429 {0.350027 0.254306 -1.257024
+      <Vertex> 1429 {0.331610 0.240925 -1.284723
       }
       <Vertex> 1430 {0.368040 -0.000001 -1.293049
       }
       <Vertex> 1431 {0.370086 -0.000001 -1.292402
       }
-      <Vertex> 1432 {0.351972 0.255720 -1.256177
+      <Vertex> 1432 {0.333453 0.242265 -1.283921
       }
       <Vertex> 1433 {-0.276176 -0.200654 -1.560467
       }
@@ -2949,27 +2949,27 @@
       }
       <Vertex> 1436 {-0.277711 -0.201770 -1.561306
       }
-      <Vertex> 1437 {-0.432658 -0.000000 -1.257022
+      <Vertex> 1437 {-0.409893 -0.000000 -1.284721
       }
       <Vertex> 1438 {-0.297750 0.216327 -1.293049
       }
       <Vertex> 1439 {-0.299405 0.217530 -1.292403
       }
-      <Vertex> 1440 {-0.435063 -0.000000 -1.256175
+      <Vertex> 1440 {-0.412171 -0.000000 -1.283919
       }
-      <Vertex> 1441 {0.350027 -0.254306 -1.257024
+      <Vertex> 1441 {0.331610 -0.240926 -1.284723
       }
       <Vertex> 1442 {0.113733 -0.350025 -1.293050
       }
       <Vertex> 1443 {0.114365 -0.351970 -1.292403
       }
-      <Vertex> 1444 {0.351972 -0.255720 -1.256177
+      <Vertex> 1444 {0.333453 -0.242265 -1.283921
       }
       <Vertex> 1445 {0.368040 -0.000001 -1.293049
       }
-      <Vertex> 1446 {0.350027 -0.254306 -1.257024
+      <Vertex> 1446 {0.331610 -0.240926 -1.284723
       }
-      <Vertex> 1447 {0.351972 -0.255720 -1.256177
+      <Vertex> 1447 {0.333453 -0.242265 -1.283921
       }
       <Vertex> 1448 {0.370086 -0.000001 -1.292402
       }
@@ -2989,13 +2989,13 @@
       }
       <Vertex> 1456 {-0.124697 0.383786 -1.527706
       }
-      <Vertex> 1457 {-0.133695 0.411480 -1.257024
+      <Vertex> 1457 {-0.126661 0.389829 -1.284723
       }
       <Vertex> 1458 {0.113732 0.350026 -1.293050
       }
       <Vertex> 1459 {0.114364 0.351971 -1.292403
       }
-      <Vertex> 1460 {-0.134438 0.413767 -1.256178
+      <Vertex> 1460 {-0.127365 0.391996 -1.283921
       }
       <Vertex> 1461 {0.324665 -0.235880 -1.527052
       }
@@ -3007,9 +3007,9 @@
       }
       <Vertex> 1465 {-0.297750 -0.216329 -1.293049
       }
-      <Vertex> 1466 {-0.432658 -0.000000 -1.257022
+      <Vertex> 1466 {-0.409893 -0.000000 -1.284721
       }
-      <Vertex> 1467 {-0.435063 -0.000000 -1.256175
+      <Vertex> 1467 {-0.412171 -0.000000 -1.283919
       }
       <Vertex> 1468 {-0.299405 -0.217531 -1.292402
       }
@@ -7168,32 +7168,32 @@
       <VertexRef> { 937 938 939 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material }
       <Normal> {-0.391195 0.091451 -0.915753}
       <VertexRef> { 940 941 942 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material }
       <Normal> {-0.233377 0.169558 -0.957489}
       <VertexRef> { 943 944 945 946 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material }
       <Normal> {-0.207861 0.343785 -0.915754}
       <VertexRef> { 947 948 949 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material }
       <Normal> {-0.033908 0.400305 -0.915754}
       <VertexRef> { 950 951 952 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material }
       <Normal> {0.089143 0.274350 -0.957489}
       <VertexRef> { 953 954 955 956 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material }
       <Normal> {0.262729 0.303921 -0.915754}
       <VertexRef> { 957 958 959 <Ref> { Icosphere }} 
     }
@@ -7269,17 +7269,17 @@
     }
     <Polygon> {
       <MRef> { Material.001 }
-      <Normal> {0.000000 0.000000 0.000000}
+      <Normal> {-0.558206 0.578965 -0.594311}
       <VertexRef> { 1016 1017 1018 1019 <Ref> { Icosphere }} 
     }
     <Polygon> {
       <MRef> { Material.001 }
-      <Normal> {0.000000 0.000000 0.000000}
+      <Normal> {-0.558203 -0.578966 -0.594312}
       <VertexRef> { 1020 1021 1022 1023 <Ref> { Icosphere }} 
     }
     <Polygon> {
       <MRef> { Material.001 }
-      <Normal> {0.000000 0.000000 0.000000}
+      <Normal> {0.111298 -0.796497 -0.594311}
       <VertexRef> { 1024 1025 1026 1027 <Ref> { Icosphere }} 
     }
     <Polygon> {
@@ -7299,7 +7299,7 @@
     }
     <Polygon> {
       <MRef> { Material.001 }
-      <Normal> {0.000000 0.000000 0.000000}
+      <Normal> {-0.723120 -0.351979 -0.594313}
       <VertexRef> { 1049 1050 1051 1052 <Ref> { Icosphere }} 
     }
     <Polygon> {
@@ -7334,17 +7334,17 @@
     }
     <Polygon> {
       <MRef> { Material.001 }
-      <Normal> {0.000000 0.000000 0.000000}
+      <Normal> {0.791906 -0.140283 -0.594311}
       <VertexRef> { 1095 1096 1097 1098 <Ref> { Icosphere }} 
     }
     <Polygon> {
       <MRef> { Material.001 }
-      <Normal> {0.000000 0.000000 0.000000}
+      <Normal> {0.378135 -0.709794 -0.594311}
       <VertexRef> { 1099 1100 1101 1102 <Ref> { Icosphere }} 
     }
     <Polygon> {
       <MRef> { Material.001 }
-      <Normal> {0.000000 0.000000 0.000000}
+      <Normal> {-0.723119 0.351981 -0.594313}
       <VertexRef> { 1103 1104 1105 1106 <Ref> { Icosphere }} 
     }
     <Polygon> {
@@ -7364,7 +7364,7 @@
     }
     <Polygon> {
       <MRef> { Material.001 }
-      <Normal> {0.000000 0.000000 0.000000}
+      <Normal> {0.378134 0.709795 -0.594311}
       <VertexRef> { 1128 1129 1130 1131 <Ref> { Icosphere }} 
     }
     <Polygon> {
@@ -7468,52 +7468,52 @@
       <VertexRef> { 1208 1209 1210 1211 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material }
       <Normal> {-0.391195 -0.091451 -0.915753}
       <VertexRef> { 1212 1213 1214 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material }
       <Normal> {-0.233378 -0.169559 -0.957489}
       <VertexRef> { 1215 1216 1217 1218 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material }
       <Normal> {-0.207861 -0.343785 -0.915754}
       <VertexRef> { 1219 1220 1221 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material }
       <Normal> {0.370236 0.155949 -0.915754}
       <VertexRef> { 1222 1223 1224 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material }
       <Normal> {0.370236 -0.155950 -0.915754}
       <VertexRef> { 1225 1226 1227 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material }
       <Normal> {0.288473 0.000000 -0.957488}
       <VertexRef> { 1228 1229 1230 1231 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material }
+      <MRef> { Material.003 }
       <Normal> {0.155818 0.000000 -0.987786}
       <VertexRef> { 1232 1233 1234 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material }
       <Normal> {-0.033907 -0.400305 -0.915754}
       <VertexRef> { 1235 1236 1237 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material }
       <Normal> {0.089143 -0.274351 -0.957489}
       <VertexRef> { 1238 1239 1240 1241 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material }
       <Normal> {0.262730 -0.303921 -0.915754}
       <VertexRef> { 1242 1243 1244 <Ref> { Icosphere }} 
     }
@@ -7534,7 +7534,7 @@
     }
     <Polygon> {
       <MRef> { Material.001 }
-      <Normal> {0.000000 0.000000 0.000000}
+      <Normal> {0.791906 0.140283 -0.594311}
       <VertexRef> { 1266 1267 1268 1269 <Ref> { Icosphere }} 
     }
     <Polygon> {
@@ -7549,7 +7549,7 @@
     }
     <Polygon> {
       <MRef> { Material.001 }
-      <Normal> {0.000000 0.000000 0.000000}
+      <Normal> {0.111297 0.796497 -0.594311}
       <VertexRef> { 1284 1285 1286 1287 <Ref> { Icosphere }} 
     }
     <Polygon> {
@@ -7574,7 +7574,7 @@
     }
     <Polygon> {
       <MRef> { Material.001 }
-      <Normal> {0.150079 -0.300064 0.942039}
+      <Normal> {0.213448 -0.256020 0.942812}
       <VertexRef> { 1313 1314 1315 1316 <Ref> { Icosphere }} 
     }
     <Polygon> {
@@ -7584,12 +7584,12 @@
     }
     <Polygon> {
       <MRef> { Material.001 }
-      <Normal> {0.150099 0.300078 0.942032}
+      <Normal> {0.213465 0.256038 0.942803}
       <VertexRef> { 1321 1322 1323 1324 <Ref> { Icosphere }} 
     }
     <Polygon> {
       <MRef> { Material.001 }
-      <Normal> {0.054955 0.330971 0.942039}
+      <Normal> {-0.022200 0.332586 0.942811}
       <VertexRef> { 1325 1326 1327 1328 <Ref> { Icosphere }} 
     }
     <Polygon> {
@@ -7614,112 +7614,112 @@
     }
     <Polygon> {
       <MRef> { Material.001 }
-      <Normal> {-0.239003 -0.235458 0.942039}
+      <Normal> {-0.177533 -0.282115 0.942811}
       <VertexRef> { 1345 1346 1347 1348 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.294811 0.407395 0.864359}
       <VertexRef> { 1349 1350 1351 1352 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.000948 0.502876 0.864358}
       <VertexRef> { 1353 1354 1355 1356 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.294813 -0.407394 0.864358}
       <VertexRef> { 1357 1358 1359 1360 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.000949 -0.502875 0.864358}
       <VertexRef> { 1361 1362 1363 1364 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.478557 0.154492 0.864358}
       <VertexRef> { 1365 1366 1367 1368 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.296354 -0.406275 0.864358}
       <VertexRef> { 1369 1370 1371 1372 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.477970 -0.156300 0.864358}
       <VertexRef> { 1373 1374 1375 1376 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.478557 -0.154492 0.864358}
       <VertexRef> { 1377 1378 1379 1380 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.296355 0.406274 0.864358}
       <VertexRef> { 1381 1382 1383 1384 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.477969 0.156300 0.864358}
       <VertexRef> { 1385 1386 1387 1388 <Ref> { Icosphere }} 
     }
     <Polygon> {
       <MRef> { Material.002 }
-      <Normal> {0.386522 0.916965 -0.098875}
+      <Normal> {0.416825 0.906552 -0.066480}
       <VertexRef> { 1389 1390 1391 1392 <Ref> { Icosphere }} 
     }
     <Polygon> {
       <MRef> { Material.002 }
-      <Normal> {-0.851675 -0.514658 -0.098876}
+      <Normal> {-0.870071 -0.488423 -0.066481}
       <VertexRef> { 1393 1394 1395 1396 <Ref> { Icosphere }} 
     }
     <Polygon> {
       <MRef> { Material.002 }
-      <Normal> {0.226285 -0.969030 -0.098875}
+      <Normal> {0.195649 -0.978418 -0.066480}
       <VertexRef> { 1397 1398 1399 1400 <Ref> { Icosphere }} 
     }
     <Polygon> {
       <MRef> { Material.002 }
-      <Normal> {-0.752641 -0.650965 -0.098876}
+      <Normal> {-0.733373 -0.676568 -0.066481}
       <VertexRef> { 1401 1402 1403 1404 <Ref> { Icosphere }} 
     }
     <Polygon> {
       <MRef> { Material.002 }
-      <Normal> {0.386522 -0.916965 -0.098875}
+      <Normal> {0.416826 -0.906552 -0.066480}
       <VertexRef> { 1405 1406 1407 1408 <Ref> { Icosphere }} 
     }
     <Polygon> {
       <MRef> { Material.002 }
-      <Normal> {0.991528 -0.084240 -0.098875}
+      <Normal> {0.990989 -0.116278 -0.066480}
       <VertexRef> { 1409 1410 1411 1412 <Ref> { Icosphere }} 
     }
     <Polygon> {
       <MRef> { Material.002 }
-      <Normal> {0.226285 0.969030 -0.098875}
+      <Normal> {0.195648 0.978418 -0.066480}
       <VertexRef> { 1413 1414 1415 1416 <Ref> { Icosphere }} 
     }
     <Polygon> {
       <MRef> { Material.002 }
-      <Normal> {-0.752643 0.650962 -0.098876}
+      <Normal> {-0.733376 0.676565 -0.066481}
       <VertexRef> { 1417 1418 1419 1420 <Ref> { Icosphere }} 
     }
     <Polygon> {
       <MRef> { Material.002 }
-      <Normal> {0.991528 0.084239 -0.098875}
+      <Normal> {0.990989 0.116278 -0.066480}
       <VertexRef> { 1421 1422 1423 1424 <Ref> { Icosphere }} 
     }
     <Polygon> {
       <MRef> { Material.002 }
-      <Normal> {-0.851673 0.514661 -0.098876}
+      <Normal> {-0.870069 0.488425 -0.066481}
       <VertexRef> { 1425 1426 1427 1428 <Ref> { Icosphere }} 
     }
     <Polygon> {
       <MRef> { Material.001 }
-      <Normal> {-0.297817 -0.154542 0.942031}
+      <Normal> {-0.323195 -0.081665 0.942802}
       <VertexRef> { 1429 1430 1431 1432 <Ref> { Icosphere }} 
     }
     <Polygon> {
@@ -7729,17 +7729,17 @@
     }
     <Polygon> {
       <MRef> { Material.001 }
-      <Normal> {0.331756 -0.050005 0.942039}
+      <Normal> {0.309450 -0.123883 0.942811}
       <VertexRef> { 1437 1438 1439 1440 <Ref> { Icosphere }} 
     }
     <Polygon> {
       <MRef> { Material.001 }
-      <Normal> {-0.239003 0.235457 0.942039}
+      <Normal> {-0.177533 0.282115 0.942811}
       <VertexRef> { 1441 1442 1443 1444 <Ref> { Icosphere }} 
     }
     <Polygon> {
       <MRef> { Material.001 }
-      <Normal> {-0.297816 0.154543 0.942031}
+      <Normal> {-0.323194 0.081665 0.942802}
       <VertexRef> { 1445 1446 1447 1448 <Ref> { Icosphere }} 
     }
     <Polygon> {
@@ -7754,7 +7754,7 @@
     }
     <Polygon> {
       <MRef> { Material.001 }
-      <Normal> {0.054956 -0.330971 0.942039}
+      <Normal> {-0.022199 -0.332586 0.942812}
       <VertexRef> { 1457 1458 1459 1460 <Ref> { Icosphere }} 
     }
     <Polygon> {
@@ -7764,7 +7764,7 @@
     }
     <Polygon> {
       <MRef> { Material.001 }
-      <Normal> {0.331776 0.050020 0.942031}
+      <Normal> {0.309472 0.123895 0.942803}
       <VertexRef> { 1465 1466 1467 1468 <Ref> { Icosphere }} 
     }
     <Polygon> {
@@ -7773,12 +7773,12 @@
       <VertexRef> { 1469 1470 1471 1472 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.200883 -0.123435 -0.971808}
       <VertexRef> { 1473 1474 1475 1476 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.055276 0.229293 -0.971787}
       <VertexRef> { 1477 1478 1479 1480 <Ref> { Icosphere }} 
     }
@@ -7788,12 +7788,12 @@
       <VertexRef> { 1481 1482 1483 1484 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.171415 -0.053196 0.983762}
       <VertexRef> { 1485 1486 1487 1488 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.000234 -0.176461 0.984308}
       <VertexRef> { 1489 1490 1491 1492 <Ref> { Icosphere }} 
     }
@@ -7803,12 +7803,12 @@
       <VertexRef> { 1493 1494 1495 1496 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.200877 -0.123437 -0.971808}
       <VertexRef> { 1497 1498 1499 1500 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.235111 -0.018254 -0.971797}
       <VertexRef> { 1501 1502 1503 1504 <Ref> { Icosphere }} 
     }
@@ -7818,12 +7818,12 @@
       <VertexRef> { 1505 1506 1507 1508 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.171418 -0.053195 0.983761}
       <VertexRef> { 1509 1510 1511 1512 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.200939 0.123432 -0.971796}
       <VertexRef> { 1513 1514 1515 1516 <Ref> { Icosphere }} 
     }
@@ -7833,12 +7833,12 @@
       <VertexRef> { 1517 1518 1519 1520 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.000236 -0.176461 0.984308}
       <VertexRef> { 1521 1522 1523 1524 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.235112 -0.018253 -0.971797}
       <VertexRef> { 1525 1526 1527 1528 <Ref> { Icosphere }} 
     }
@@ -7848,12 +7848,12 @@
       <VertexRef> { 1529 1530 1531 1532 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.170257 0.062623 0.983408}
       <VertexRef> { 1533 1534 1535 1536 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.200939 0.123429 -0.971797}
       <VertexRef> { 1537 1538 1539 1540 <Ref> { Icosphere }} 
     }
@@ -7863,12 +7863,12 @@
       <VertexRef> { 1541 1542 1543 1544 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.235114 0.018259 -0.971796}
       <VertexRef> { 1545 1546 1547 1548 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.170256 0.062624 0.983408}
       <VertexRef> { 1549 1550 1551 1552 <Ref> { Icosphere }} 
     }
@@ -7878,12 +7878,12 @@
       <VertexRef> { 1553 1554 1555 1556 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.055277 0.229289 -0.971788}
       <VertexRef> { 1557 1558 1559 1560 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.235120 0.018262 -0.971795}
       <VertexRef> { 1561 1562 1563 1564 <Ref> { Icosphere }} 
     }
@@ -7893,12 +7893,12 @@
       <VertexRef> { 1565 1566 1567 1568 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.000233 -0.176458 0.984308}
       <VertexRef> { 1569 1570 1571 1572 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.055277 0.229290 -0.971787}
       <VertexRef> { 1573 1574 1575 1576 <Ref> { Icosphere }} 
     }
@@ -7908,17 +7908,17 @@
       <VertexRef> { 1577 1578 1579 1580 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.179471 -0.152896 -0.971809}
       <VertexRef> { 1581 1582 1583 1584 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.235114 -0.018256 -0.971796}
       <VertexRef> { 1585 1586 1587 1588 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.000234 -0.176459 0.984308}
       <VertexRef> { 1589 1590 1591 1592 <Ref> { Icosphere }} 
     }
@@ -7933,7 +7933,7 @@
       <VertexRef> { 1597 1598 1599 1600 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.179472 -0.152904 -0.971808}
       <VertexRef> { 1601 1602 1603 1604 <Ref> { Icosphere }} 
     }
@@ -7963,7 +7963,7 @@
       <VertexRef> { 1621 1622 1623 1624 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.170959 0.054484 0.983771}
       <VertexRef> { 1625 1626 1627 1628 <Ref> { Icosphere }} 
     }
@@ -7978,7 +7978,7 @@
       <VertexRef> { 1633 1634 1635 1636 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.235110 -0.018251 -0.971797}
       <VertexRef> { 1637 1638 1639 1640 <Ref> { Icosphere }} 
     }
@@ -8008,7 +8008,7 @@
       <VertexRef> { 1657 1658 1659 1660 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.179486 0.152971 -0.971794}
       <VertexRef> { 1661 1662 1663 1664 <Ref> { Icosphere }} 
     }
@@ -8023,7 +8023,7 @@
       <VertexRef> { 1669 1670 1671 1672 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.170961 0.054486 0.983770}
       <VertexRef> { 1673 1674 1675 1676 <Ref> { Icosphere }} 
     }
@@ -8053,7 +8053,7 @@
       <VertexRef> { 1693 1694 1695 1696 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.235117 0.018260 -0.971796}
       <VertexRef> { 1697 1698 1699 1700 <Ref> { Icosphere }} 
     }
@@ -8068,7 +8068,7 @@
       <VertexRef> { 1705 1706 1707 1708 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.179485 0.152970 -0.971795}
       <VertexRef> { 1709 1710 1711 1712 <Ref> { Icosphere }} 
     }
@@ -8098,7 +8098,7 @@
       <VertexRef> { 1729 1730 1731 1732 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.107217 0.147648 0.983211}
       <VertexRef> { 1733 1734 1735 1736 <Ref> { Icosphere }} 
     }
@@ -8113,7 +8113,7 @@
       <VertexRef> { 1741 1742 1743 1744 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.235118 0.018260 -0.971795}
       <VertexRef> { 1745 1746 1747 1748 <Ref> { Icosphere }} 
     }
@@ -8143,7 +8143,7 @@
       <VertexRef> { 1765 1766 1767 1768 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.107217 0.147651 0.983211}
       <VertexRef> { 1769 1770 1771 1772 <Ref> { Icosphere }} 
     }
@@ -8158,7 +8158,7 @@
       <VertexRef> { 1777 1778 1779 1780 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.179470 -0.152899 -0.971809}
       <VertexRef> { 1781 1782 1783 1784 <Ref> { Icosphere }} 
     }
@@ -8188,7 +8188,7 @@
       <VertexRef> { 1801 1802 1803 1804 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.170959 0.054490 0.983770}
       <VertexRef> { 1805 1806 1807 1808 <Ref> { Icosphere }} 
     }
@@ -8203,7 +8203,7 @@
       <VertexRef> { 1813 1814 1815 1816 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.169982 -0.051622 0.984094}
       <VertexRef> { 1817 1818 1819 1820 <Ref> { Icosphere }} 
     }
@@ -8233,7 +8233,7 @@
       <VertexRef> { 1837 1838 1839 1840 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.179471 -0.152900 -0.971808}
       <VertexRef> { 1841 1842 1843 1844 <Ref> { Icosphere }} 
     }
@@ -8248,7 +8248,7 @@
       <VertexRef> { 1849 1850 1851 1852 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.170957 0.054489 0.983771}
       <VertexRef> { 1853 1854 1855 1856 <Ref> { Icosphere }} 
     }
@@ -8278,7 +8278,7 @@
       <VertexRef> { 1873 1874 1875 1876 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.090044 0.217994 -0.971787}
       <VertexRef> { 1877 1878 1879 1880 <Ref> { Icosphere }} 
     }
@@ -8293,7 +8293,7 @@
       <VertexRef> { 1885 1886 1887 1888 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.169983 -0.051620 0.984094}
       <VertexRef> { 1889 1890 1891 1892 <Ref> { Icosphere }} 
     }
@@ -8323,7 +8323,7 @@
       <VertexRef> { 1909 1910 1911 1912 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.179487 0.152975 -0.971794}
       <VertexRef> { 1913 1914 1915 1916 <Ref> { Icosphere }} 
     }
@@ -8338,7 +8338,7 @@
       <VertexRef> { 1921 1922 1923 1924 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.090048 0.217994 -0.971787}
       <VertexRef> { 1925 1926 1927 1928 <Ref> { Icosphere }} 
     }
@@ -8718,202 +8718,202 @@
       <VertexRef> { 2225 2226 2227 2228 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.170254 0.062625 0.983408}
       <VertexRef> { 2229 2230 2231 2232 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.055279 0.229287 -0.971788}
       <VertexRef> { 2233 2234 2235 2236 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.003352 0.182425 0.983214}
       <VertexRef> { 2237 2238 2239 2240 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.089960 -0.217945 -0.971806}
       <VertexRef> { 2241 2242 2243 2244 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.170255 0.062623 0.983408}
       <VertexRef> { 2245 2246 2247 2248 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.003353 0.182428 0.983214}
       <VertexRef> { 2249 2250 2251 2252 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.200942 0.123428 -0.971796}
       <VertexRef> { 2253 2254 2255 2256 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.089956 -0.217944 -0.971807}
       <VertexRef> { 2257 2258 2259 2260 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.171420 -0.053197 0.983761}
       <VertexRef> { 2261 2262 2263 2264 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.200936 0.123431 -0.971797}
       <VertexRef> { 2265 2266 2267 2268 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.103716 0.148785 0.983416}
       <VertexRef> { 2269 2270 2271 2272 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.171421 -0.053194 0.983761}
       <VertexRef> { 2273 2274 2275 2276 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.200880 -0.123438 -0.971808}
       <VertexRef> { 2277 2278 2279 2280 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.103719 0.148785 0.983415}
       <VertexRef> { 2281 2282 2283 2284 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.200880 -0.123435 -0.971808}
       <VertexRef> { 2285 2286 2287 2288 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.003356 0.182424 0.983214}
       <VertexRef> { 2289 2290 2291 2292 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.055322 -0.229185 -0.971810}
       <VertexRef> { 2293 2294 2295 2296 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.003355 0.182425 0.983214}
       <VertexRef> { 2297 2298 2299 2300 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.089958 -0.217947 -0.971806}
       <VertexRef> { 2301 2302 2303 2304 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.109877 -0.139642 0.984087}
       <VertexRef> { 2305 2306 2307 2308 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.055319 -0.229192 -0.971808}
       <VertexRef> { 2309 2310 2311 2312 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.103711 0.148784 0.983416}
       <VertexRef> { 2313 2314 2315 2316 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.089955 -0.217943 -0.971807}
       <VertexRef> { 2317 2318 2319 2320 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.109878 -0.139641 0.984087}
       <VertexRef> { 2321 2322 2323 2324 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.103713 0.148786 0.983416}
       <VertexRef> { 2325 2326 2327 2328 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.101156 -0.144574 0.984310}
       <VertexRef> { 2329 2330 2331 2332 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.090045 0.217994 -0.971787}
       <VertexRef> { 2333 2334 2335 2336 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.101154 -0.144574 0.984310}
       <VertexRef> { 2337 2338 2339 2340 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.055320 -0.229187 -0.971809}
       <VertexRef> { 2341 2342 2343 2344 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.109879 -0.139641 0.984087}
       <VertexRef> { 2345 2346 2347 2348 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.090043 0.217990 -0.971788}
       <VertexRef> { 2349 2350 2351 2352 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.169986 -0.051622 0.984094}
       <VertexRef> { 2353 2354 2355 2356 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.055321 -0.229189 -0.971809}
       <VertexRef> { 2357 2358 2359 2360 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.109880 -0.139641 0.984087}
       <VertexRef> { 2361 2362 2363 2364 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.169986 -0.051623 0.984093}
       <VertexRef> { 2365 2366 2367 2368 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.101153 -0.144573 0.984310}
       <VertexRef> { 2369 2370 2371 2372 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.107220 0.147646 0.983211}
       <VertexRef> { 2373 2374 2375 2376 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.179486 0.152967 -0.971795}
       <VertexRef> { 2377 2378 2379 2380 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {-0.101153 -0.144571 0.984311}
       <VertexRef> { 2381 2382 2383 2384 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material.002 }
+      <MRef> { Material.003 }
       <Normal> {0.107221 0.147643 0.983212}
       <VertexRef> { 2385 2386 2387 2388 <Ref> { Icosphere }} 
     }
@@ -9318,12 +9318,12 @@
       <VertexRef> { 2705 2706 2707 2708 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material }
+      <MRef> { Material.003 }
       <Normal> {0.155818 0.000000 -0.987786}
       <VertexRef> { 2709 2710 2711 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material }
+      <MRef> { Material.003 }
       <Normal> {0.155818 0.000000 -0.987786}
       <VertexRef> { 2712 2713 2714 <Ref> { Icosphere }} 
     }
@@ -9333,62 +9333,62 @@
       <VertexRef> { 2715 2716 2717 2718 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material }
+      <MRef> { Material.003 }
       <Normal> {0.048151 -0.148193 -0.987786}
       <VertexRef> { 2719 2720 2721 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material }
+      <MRef> { Material.003 }
       <Normal> {0.048151 -0.148193 -0.987786}
       <VertexRef> { 2722 2723 2724 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material }
+      <MRef> { Material.003 }
       <Normal> {0.048151 -0.148193 -0.987786}
       <VertexRef> { 2725 2726 2727 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material }
+      <MRef> { Material.003 }
       <Normal> {-0.126059 -0.091585 -0.987786}
       <VertexRef> { 2728 2729 2730 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material }
+      <MRef> { Material.003 }
       <Normal> {-0.126063 -0.091584 -0.987786}
       <VertexRef> { 2731 2732 2733 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material }
+      <MRef> { Material.003 }
       <Normal> {-0.126063 -0.091588 -0.987785}
       <VertexRef> { 2734 2735 2736 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material }
+      <MRef> { Material.003 }
       <Normal> {-0.126063 0.091588 -0.987785}
       <VertexRef> { 2737 2738 2739 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material }
+      <MRef> { Material.003 }
       <Normal> {-0.126063 0.091584 -0.987786}
       <VertexRef> { 2740 2741 2742 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material }
+      <MRef> { Material.003 }
       <Normal> {-0.126059 0.091585 -0.987786}
       <VertexRef> { 2743 2744 2745 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material }
+      <MRef> { Material.003 }
       <Normal> {0.048151 0.148192 -0.987786}
       <VertexRef> { 2746 2747 2748 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material }
+      <MRef> { Material.003 }
       <Normal> {0.048151 0.148192 -0.987786}
       <VertexRef> { 2749 2750 2751 <Ref> { Icosphere }} 
     }
     <Polygon> {
-      <MRef> { Material }
+      <MRef> { Material.003 }
       <Normal> {0.048151 0.148192 -0.987786}
       <VertexRef> { 2752 2753 2754 <Ref> { Icosphere }} 
     }
