@@ -15,7 +15,7 @@ BLOCKINTERVAL=0.06
 GLOBALMASS=0.1 # kg USI
 ```
 
-### bounce_physics.py screenshots:
+### main.py screenshots:
 ![](WaveSim_screenshot01.png)
 ![](WaveSim_screenshot02.png)
 ![](WaveSim_screenshot03.png)
