@@ -40,15 +40,44 @@ class loadingscreen:
         create the whole post-rendering HUD (pause, rewind,...).\n
         CommandBase is the name of the application (App)
         '''
-        tempMap = loader.loadModel(str(MAINDIR)+"/files/play_pause.egg")
+        tempMap = loader.loadModel(str(MAINDIR)+"/files/play.egg")
+        tempMap2 = loader.loadModel(str(MAINDIR)+"/files/pause.egg")
+        tempMap3 = loader.loadModel(str(MAINDIR)+"/files/fforward.egg")
+        tempMap4 = loader.loadModel(str(MAINDIR)+"/files/slower.egg")
         self.play_button = DirectButton(geom = (tempMap.find('**/play'),
                                                 tempMap.find('**/play_on'),
-                                                tempMap.find('**/play_out'),
-                                                tempMap.find('**/pause'),
-                                                tempMap.find('**/pause_on'),
-                                                tempMap.find('**/pause_out')),
+                                                tempMap.find('**/play_out')),
                                                 pos = (0,0,-0.85),
                                                 command = CommandBase.toggleReading,
-                                                frameColor=(0,0,0,0),
+                                                frameColor = (0,0,0,0),
                                                 scale = (0.187,1,0.187))
+        self.pause_button = DirectButton(geom = (tempMap2.find('**/pause'),
+                                                tempMap2.find('**/pause_on'),
+                                                tempMap2.find('**/pause_out')),
+                                                pos = (0,0,-0.85),
+                                                command = CommandBase.toggleReading,
+                                                frameColor = (0,0,0,0),
+                                                scale = (0.187,1,0.187))
+        self.forward_button = DirectButton(geom = (tempMap3.find('**/fast_forward'),
+                                                    tempMap3.find('**/fast_forward_on'),
+                                                    tempMap3.find('**/fast_forward_out')),
+                                                    pos = (0.2,0,-0.85),
+                                                    command = CommandBase.changeSpeed,
+                                                    extraArgs = [2],
+                                                    frameColor = (0,0,0,0),
+                                                    scale = (0.14,1,0.14))
+        self.slower_button = DirectButton(geom = (tempMap4.find('**/slower'),
+                                                    tempMap4.find('**/slower_on'),
+                                                    tempMap4.find('**/slower_out')),
+                                                    pos = (-0.2,0,-0.85),
+                                                    command = CommandBase.changeSpeed,
+                                                    extraArgs = [0.5],
+                                                    frameColor = (0,0,0,0),
+                                                    scale = (0.14,1,0.14))
+        sliderMap = self.loader.loadModel(str(MAINDIR)+"/files/slider.egg")
+        self.stateSlider = DirectSlider(range = (0,5),pos = (0,0,-0.7),value = 1.5)
+        if CommandBase.is_paused: # check the initial state and display the correct button accordingly
+            self.pause_button.hide()
+        else:
+            self.play_button.hide()
         return None

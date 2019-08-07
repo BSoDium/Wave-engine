@@ -29,8 +29,11 @@ class SaveSim:
         '''
         basically reads and renders the requested frame
         '''
-        for i in range(len(self.content)):
-            for j in range(len(self.content[i])):
-                self.content[i][j].setPos(self.PositionalData[frame][i][j])
-                self.content[i][j].setColorScale(self.ColorScaleData[frame][i][j])
+        if int(frame) == frame:
+            frame = int(frame)
+            for i in range(len(self.content)):
+                for j in range(len(self.content[i])):
+                    self.content[i][j].setPos(self.PositionalData[frame][i][j])
+                    self.content[i][j].setColorScale(self.ColorScaleData[frame][i][j])
+        else: pass
         return None

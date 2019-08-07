@@ -27,12 +27,16 @@ except:
     sys.exit(0)
 
 # fullscreen routine
-user32 = ctypes.windll.user32
-user32.SetProcessDPIAware()
-loadPrcFileData('','fullscreen true')
-loadPrcFileData('','win-size '+str(user32.GetSystemMetrics(0))+' '+str(user32.GetSystemMetrics(1)))
-
-loadPrcFileData('','window-title SomeFunnyShit')
+FULLSCREEN = False
+if FULLSCREEN:
+    user32 = ctypes.windll.user32
+    user32.SetProcessDPIAware()
+    loadPrcFileData('','fullscreen true')
+    loadPrcFileData('','win-size '+str(user32.GetSystemMetrics(0))+' '+str(user32.GetSystemMetrics(1)))
+else:
+    loadPrcFileData('','win-size 1120 630')
+    loadPrcFileData('','undecorated 1')
+loadPrcFileData('','window-title WaveEngine')
 
 # antialias
 adv_Gfx = True # turn off if your computer can't handle it
@@ -53,9 +57,8 @@ GLOBALMASS = 0.1 # kg USI
 HOLDING_FRAME = True # this defines whether there is a stable frame holding the moving surface or not. Try turning it off to see what happens ;)
 
 
-TOGGLE_LIVE_DISPLAY = True # when switched off, the calculation process isn't rendered in 3d, and only returns a list of positions, which can be read later, without doing the maths
-PRESIMULATION_TIME = 50 # in frames
-
+TOGGLE_LIVE_DISPLAY = False # when switched off, the calculation process isn't rendered in 3d, and only returns a list of positions, which are transfered to the panda3d engine later, without doing the maths
+PRESIMULATION_TIME = 600
 class VirtualMeshAttribute: # used during non rendered calculations
     def __init__(self):
         self.position = None
@@ -85,7 +88,7 @@ class VirtualMeshAttribute: # used during non rendered calculations
     def getPos(self):
         return self.position
 
-class harmosc:
+class harmosc: # oscillateur harmonique
     def __init__(self,pos,id):
         self.movable = True
         self.law = None
@@ -401,6 +404,15 @@ class MainApp(ShowBase):
             self.Gui2d.update(task.frame/PRESIMULATION_TIME)
             return task.cont
         elif task.frame == PRESIMULATION_TIME and not(TOGGLE_LIVE_DISPLAY): 
+
+            user32 = ctypes.windll.user32
+            user32.SetProcessDPIAware()
+            loadPrcFileData('','fullscreen true')
+            loadPrcFileData('','win-size '+str(user32.GetSystemMetrics(0))+' '+str(user32.GetSystemMetrics(1)))
+            windowNameBuffer = self.winList[0]
+            self.close_window(windowNameBuffer)
+            self.open_default_window()
+            # now we have a brand new fullscreen window
             self.postMainloopTransition()
             return task.cont
         else: # actually there is no such option
@@ -408,14 +420,15 @@ class MainApp(ShowBase):
             return task.cont 
 
     def postMainloopTransition(self): # def thefunctionImadeat1amfuckyouIhadnoideas(self):
+        self.setBackgroundColor(0.145, 0.149, 0.145, 1) # changing window implies reverting background color to default
         self.Gui2d.delete()
         self.Saved.CreateScene(render,GLOBALSCALE)
         self.task_mgr.add(self.PostRendering,"DataDisplayTask")
         self.task_mgr.remove("FrameUpdateTask")
-
         # *shit*
         self.FramePosition = 0 # this the frame number (the position of the reading algorithm in our data lists)
-        self.is_paused = True # the post rendered simulation starts by default as paused
+        self.is_paused = True # the post rendered simulation is initialized by default as paused
+        self.reading_speed = 1 # usefull if we want to implement a fast forward/ slow mo button
         self.Gui2d.CreateSimReadingHUD(App)
         return None
 
@@ -423,7 +436,12 @@ class MainApp(ShowBase):
     def PostRendering(self,task):
         if not(self.is_paused) or task.frame == 0: # if we're dealing with the first frame, read it, cause if we don't we'll get an empty render
             self.Saved.read(self.FramePosition)
-            self.FramePosition+=1
+            self.FramePosition+=self.reading_speed 
+            '''
+            if the reading_speed is smaller than 1, there's a security system, that will update the render every time 
+            the frame_position hits an int:
+            0.25,0.5,0.75,|1|,1.25,1.5,1.75,|2|
+            '''
 
         if self.FramePosition < PRESIMULATION_TIME:
             return task.cont
@@ -431,12 +449,25 @@ class MainApp(ShowBase):
             self.task_mgr.remove("DataDisplayTask")
             return task.done
 
+    # button command functions come next
     def toggleReading(self):
         '''
-        allows to pause the reading of the precomputed simulation
+        switches between play and pause mode when reading the precomputed simulation
         '''
+        if self.is_paused:
+            self.Gui2d.play_button.hide()
+            self.Gui2d.pause_button.show()
+        else:
+            self.Gui2d.pause_button.hide()
+            self.Gui2d.play_button.show()
         self.is_paused = not(self.is_paused)
         return None
+    def changeSpeed(self,value):
+        '''
+        changes the self.reading_speed variable
+        '''
+        self.FramePosition = int(self.FramePosition) # when pressing ff and slower buttons, this helps
+        self.reading_speed *= value
 
 def warn(content,description):
     print("[Warning]: "+content+"\n"+description)
