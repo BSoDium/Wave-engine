@@ -2,7 +2,7 @@
 A panda3d based wave-motion particle simulator in python.<br>
 
 ### Installing
-The only required library is panda3d (all other libs used are included by default in the python installer package
+The only required library is panda3d (all other libs used are included by default in the python installer package) <br>
 In order to install it, type ```pip install panda``` in the windows command prompt, or install the SDK from [the panda3d webpage](panda3d.org)
 Customizable physical variables inside the code:<br>
 ```
@@ -15,7 +15,7 @@ BLOCKINTERVAL=0.06
 GLOBALMASS=0.1 # kg USI
 ```
 
-### main.py screenshots:
-![](WaveSim_screenshot01.png)
-![](WaveSim_screenshot02.png)
+### main algorithm screenshots, with the corresponding version:
 ![](WaveSim_screenshot03.png)
+![](WaveSim_screenshot02.png)
+![](WaveSim_screenshot01.png)
