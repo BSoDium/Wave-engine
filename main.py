@@ -1,5 +1,11 @@
-# Wave Engine V0.3
+# Wave Engine V0.4
 # Dependencies : pandaGui_toolBox.py, SaveTools.py
+# Philippe NJ - 2019 - l3alr0g (github)
+# this code is open source, and can therefore be copied, modified and published without any special authorizations fro the author
+# it is however mandatory to include this short text in the credits of any software which uses it
+
+
+# It is recommended to use a mouse
 
 try:
     import os,ctypes,sys,random,time # I definitely won't use those
@@ -58,7 +64,7 @@ HOLDING_FRAME = True # this defines whether there is a stable frame holding the 
 
 
 TOGGLE_LIVE_DISPLAY = False # when switched off, the calculation process isn't rendered in 3d, and only returns a list of positions, which are transfered to the panda3d engine later, without doing the maths
-PRESIMULATION_TIME = 600
+PRESIMULATION_TIME = 200
 class VirtualMeshAttribute: # used during non rendered calculations
     def __init__(self):
         self.position = None
@@ -179,7 +185,7 @@ class PhysicalArray:
                         # save the color for non simulated blocks (controlled by defined law)
                         colorScaleBuffer[x].append((1,1,1,1))
                 
-                elif not(self.content[x][y].movable) and not(TOGGLE_LIVE_DISPLAY):
+                elif not(self.content[x][y].movable) and not(TOGGLE_LIVE_DISPLAY) and not(self.content[x][y].law): # last one just to be sure
                     colorScaleBuffer[x].append((1,1,1,1))
 
         if not(TOGGLE_LIVE_DISPLAY):
@@ -321,13 +327,16 @@ class MainApp(ShowBase):
 
 
         '''
-        insert all the override commands between the two commented lines
+        insert all the override commands between the two hashtaged lines
+        ################################################################
         '''
+        # --> here are some examples
         #self.ground.toggle_gravity(9.81)
-        self.ground.single_override("sine8",10,10,-2) # max is 21-1=20 (depends on the PhysicalArray definition)
+        self.ground.single_override("sine6",10,10,-2) 
         #self.ground.column_override("sine8",0,-1)
         #self.ground.line_override("controlled",0,-1)
         '''
+        ################################################################
         Using the override commands is pretty simple:
         you can choose between a single_override, which will take control of only one block at a time,
         a column_override for column displacement and/or distorsion,
@@ -383,13 +392,15 @@ class MainApp(ShowBase):
         alight = render.attachNewNode(a)
         render.setLight(alight)
         
-        '''
-        # camera
+        
+        # camera, comment this part if you want default panda3d control
         empirical1 = (12.7973, 3.6711, 4.36375)
-        empirical2 = (107.397, -8.29886, -0.55216)
-        self.cam.setPos(empirical1)
-        self.cam.setHpr(empirical2)
-        '''
+        size = self.ground.GetSize()
+        bufferMesh = self.ground.content[floor(size[0]/2)][floor(size[1]/2)].model
+        self.camera.setPos(empirical1)
+        self.camera.lookAt(bufferMesh.getPos())
+        self.disableMouse()
+        
         '''
         # skybox setup (disabled because it is completely useless in means of simulation. It makes the developer happy tho)
         environment = skybox(render)
@@ -429,38 +440,51 @@ class MainApp(ShowBase):
         self.FramePosition = 0 # this the frame number (the position of the reading algorithm in our data lists)
         self.is_paused = True # the post rendered simulation is initialized by default as paused
         self.reading_speed = 1 # usefull if we want to implement a fast forward/ slow mo button
-        self.Gui2d.CreateSimReadingHUD(App)
+        self.Gui2d.CreateSimReadingHUD(App, PRESIMULATION_TIME)
         return None
 
     
     def PostRendering(self,task):
-        if not(self.is_paused) or task.frame == 0: # if we're dealing with the first frame, read it, cause if we don't we'll get an empty render
+        try:
             self.Saved.read(self.FramePosition)
-            self.FramePosition+=self.reading_speed 
+        except:
+            raise ValueError('invalid frame value, list index out of range. Given frame: %s' %(self.FramePosition))
+        if not(self.is_paused) or task.frame == 0: # if we're dealing with the first frame, read it, cause if we don't we'll get an empty render
+            if task.frame != 0:
+                self.FramePosition+=self.reading_speed 
             '''
             if the reading_speed is smaller than 1, there's a security system, that will update the render every time 
             the frame_position hits an int:
             0.25,0.5,0.75,|1|,1.25,1.5,1.75,|2|
             '''
-
-        if self.FramePosition < PRESIMULATION_TIME:
-            return task.cont
+            self.Gui2d.HUDcom(App,self.FramePosition, PRESIMULATION_TIME)
         else:
-            self.task_mgr.remove("DataDisplayTask")
-            return task.done
+            self.FramePosition = round(self.Gui2d.stateSlider.getValue())
+
+        if self.FramePosition >= PRESIMULATION_TIME-1:
+            self.toggleReading(True)
+            #self.task_mgr.remove("DataDisplayTask")
+        return task.cont
 
     # button command functions come next
-    def toggleReading(self):
+    def toggleReading(self, force_state): # force_state
         '''
         switches between play and pause mode when reading the precomputed simulation
         '''
-        if self.is_paused:
-            self.Gui2d.play_button.hide()
-            self.Gui2d.pause_button.show()
-        else:
+        if force_state: # override to paused state
+            self.is_paused = True
             self.Gui2d.pause_button.hide()
             self.Gui2d.play_button.show()
-        self.is_paused = not(self.is_paused)
+        else:
+            if self.FramePosition >= PRESIMULATION_TIME-1: # security (in case the user is dumb enough to click play at the end)
+                return 1 # unused
+            if self.is_paused:
+                self.Gui2d.play_button.hide()
+                self.Gui2d.pause_button.show()
+            else:
+                self.Gui2d.pause_button.hide()
+                self.Gui2d.play_button.show()
+            self.is_paused = not(self.is_paused)
         return None
     def changeSpeed(self,value):
         '''
