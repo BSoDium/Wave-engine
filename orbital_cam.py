@@ -11,4 +11,4 @@ class OrbitalCamera:
         self.zoomDist = 3
         
     def RecomputePosition(self):
-
+        self.camera.setPos()
