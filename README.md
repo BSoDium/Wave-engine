@@ -26,7 +26,7 @@ PRESIMULATION_TIME = 200
 
   This version is considered as stable
 
-![](C:\Users\kelta\Documents\GitHub\Wave-simulator\WaveSim_screenshot04.png)
+![](WaveSim_screenshot04.png)
 
 - **Beta 0.2** changelog (0.3 was never published): fixed live simulation, main mechanics work, needs some optimization though
 
