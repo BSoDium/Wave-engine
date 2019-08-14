@@ -26,8 +26,8 @@ MAINDIR=Filename.from_os_specific(os.getcwd())
 
 # MAIN PARAMETERS -- CHANGE THOSE TO MODIFY THE WAVE
 AMPLITUDE=0.1
-PULSE=4        # in this case, equals to the speed of displacement of the wave
-PHASE_SHIFT=4
+PULSE=5        # in this case, equals to the speed of displacement of the wave
+PHASE_SHIFT=50
 
 
 class wave:

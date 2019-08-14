@@ -1,5 +1,11 @@
-# Wave Engine V0.3
+# Wave Engine V0.4
 # Dependencies : pandaGui_toolBox.py, SaveTools.py
+# Philippe NJ - 2019 - l3alr0g (github)
+# this code is open source, and can therefore be copied, modified and published without any special authorizations fro the author
+# it is however mandatory to include this short text in the credits of any software which uses it
+
+
+# It is recommended to use a mouse
 
 try:
     import os,ctypes,sys,random,time # I definitely won't use those
@@ -27,12 +33,16 @@ except:
     sys.exit(0)
 
 # fullscreen routine
-user32 = ctypes.windll.user32
-user32.SetProcessDPIAware()
-loadPrcFileData('','fullscreen true')
-loadPrcFileData('','win-size '+str(user32.GetSystemMetrics(0))+' '+str(user32.GetSystemMetrics(1)))
-
-loadPrcFileData('','window-title SomeFunnyShit')
+FULLSCREEN = False
+if FULLSCREEN:
+    user32 = ctypes.windll.user32
+    user32.SetProcessDPIAware()
+    loadPrcFileData('','fullscreen true')
+    loadPrcFileData('','win-size '+str(user32.GetSystemMetrics(0))+' '+str(user32.GetSystemMetrics(1)))
+else:
+    loadPrcFileData('','win-size 1120 630')
+    loadPrcFileData('','undecorated 1')
+loadPrcFileData('','window-title WaveEngine')
 
 # antialias
 adv_Gfx = True # turn off if your computer can't handle it
@@ -53,9 +63,8 @@ GLOBALMASS = 0.1 # kg USI
 HOLDING_FRAME = True # this defines whether there is a stable frame holding the moving surface or not. Try turning it off to see what happens ;)
 
 
-TOGGLE_LIVE_DISPLAY = True # when switched off, the calculation process isn't rendered in 3d, and only returns a list of positions, which can be read later, without doing the maths
-PRESIMULATION_TIME = 50 # in frames
-
+TOGGLE_LIVE_DISPLAY = False # when switched off, the calculation process isn't rendered in 3d, and only returns a list of positions, which are transfered to the panda3d engine later, without doing the maths
+PRESIMULATION_TIME = 200
 class VirtualMeshAttribute: # used during non rendered calculations
     def __init__(self):
         self.position = None
@@ -85,7 +94,7 @@ class VirtualMeshAttribute: # used during non rendered calculations
     def getPos(self):
         return self.position
 
-class harmosc:
+class harmosc: # oscillateur harmonique
     def __init__(self,pos,id):
         self.movable = True
         self.law = None
@@ -176,7 +185,7 @@ class PhysicalArray:
                         # save the color for non simulated blocks (controlled by defined law)
                         colorScaleBuffer[x].append((1,1,1,1))
                 
-                elif not(self.content[x][y].movable) and not(TOGGLE_LIVE_DISPLAY):
+                elif not(self.content[x][y].movable) and not(TOGGLE_LIVE_DISPLAY) and not(self.content[x][y].law): # last one just to be sure
                     colorScaleBuffer[x].append((1,1,1,1))
 
         if not(TOGGLE_LIVE_DISPLAY):
@@ -318,13 +327,16 @@ class MainApp(ShowBase):
 
 
         '''
-        insert all the override commands between the two commented lines
+        insert all the override commands between the two hashtaged lines
+        ################################################################
         '''
+        # --> here are some examples
         #self.ground.toggle_gravity(9.81)
-        self.ground.single_override("sine8",10,10,-2) # max is 21-1=20 (depends on the PhysicalArray definition)
+        self.ground.single_override("sine6",10,10,-2) 
         #self.ground.column_override("sine8",0,-1)
         #self.ground.line_override("controlled",0,-1)
         '''
+        ################################################################
         Using the override commands is pretty simple:
         you can choose between a single_override, which will take control of only one block at a time,
         a column_override for column displacement and/or distorsion,
@@ -380,13 +392,15 @@ class MainApp(ShowBase):
         alight = render.attachNewNode(a)
         render.setLight(alight)
         
-        '''
-        # camera
+        
+        # camera, comment this part if you want default panda3d control
         empirical1 = (12.7973, 3.6711, 4.36375)
-        empirical2 = (107.397, -8.29886, -0.55216)
-        self.cam.setPos(empirical1)
-        self.cam.setHpr(empirical2)
-        '''
+        size = self.ground.GetSize()
+        bufferMesh = self.ground.content[floor(size[0]/2)][floor(size[1]/2)].model
+        self.camera.setPos(empirical1)
+        self.camera.lookAt(bufferMesh.getPos())
+        self.disableMouse()
+        
         '''
         # skybox setup (disabled because it is completely useless in means of simulation. It makes the developer happy tho)
         environment = skybox(render)
@@ -401,6 +415,15 @@ class MainApp(ShowBase):
             self.Gui2d.update(task.frame/PRESIMULATION_TIME)
             return task.cont
         elif task.frame == PRESIMULATION_TIME and not(TOGGLE_LIVE_DISPLAY): 
+
+            user32 = ctypes.windll.user32
+            user32.SetProcessDPIAware()
+            loadPrcFileData('','fullscreen true')
+            loadPrcFileData('','win-size '+str(user32.GetSystemMetrics(0))+' '+str(user32.GetSystemMetrics(1)))
+            windowNameBuffer = self.winList[0]
+            self.close_window(windowNameBuffer)
+            self.open_default_window()
+            # now we have a brand new fullscreen window
             self.postMainloopTransition()
             return task.cont
         else: # actually there is no such option
@@ -408,35 +431,67 @@ class MainApp(ShowBase):
             return task.cont 
 
     def postMainloopTransition(self): # def thefunctionImadeat1amfuckyouIhadnoideas(self):
+        self.setBackgroundColor(0.145, 0.149, 0.145, 1) # changing window implies reverting background color to default
         self.Gui2d.delete()
         self.Saved.CreateScene(render,GLOBALSCALE)
         self.task_mgr.add(self.PostRendering,"DataDisplayTask")
         self.task_mgr.remove("FrameUpdateTask")
-
         # *shit*
         self.FramePosition = 0 # this the frame number (the position of the reading algorithm in our data lists)
-        self.is_paused = True # the post rendered simulation starts by default as paused
-        self.Gui2d.CreateSimReadingHUD(App)
+        self.is_paused = True # the post rendered simulation is initialized by default as paused
+        self.reading_speed = 1 # usefull if we want to implement a fast forward/ slow mo button
+        self.Gui2d.CreateSimReadingHUD(App, PRESIMULATION_TIME)
         return None
 
     
     def PostRendering(self,task):
-        if not(self.is_paused) or task.frame == 0: # if we're dealing with the first frame, read it, cause if we don't we'll get an empty render
+        try:
             self.Saved.read(self.FramePosition)
-            self.FramePosition+=1
-
-        if self.FramePosition < PRESIMULATION_TIME:
-            return task.cont
+        except:
+            raise ValueError('invalid frame value, list index out of range. Given frame: %s' %(self.FramePosition))
+        if not(self.is_paused) or task.frame == 0: # if we're dealing with the first frame, read it, cause if we don't we'll get an empty render
+            if task.frame != 0:
+                self.FramePosition+=self.reading_speed 
+            '''
+            if the reading_speed is smaller than 1, there's a security system, that will update the render every time 
+            the frame_position hits an int:
+            0.25,0.5,0.75,|1|,1.25,1.5,1.75,|2|
+            '''
+            self.Gui2d.HUDcom(App,self.FramePosition, PRESIMULATION_TIME)
         else:
-            self.task_mgr.remove("DataDisplayTask")
-            return task.done
+            self.FramePosition = round(self.Gui2d.stateSlider.getValue())
 
-    def toggleReading(self):
+        if self.FramePosition >= PRESIMULATION_TIME-1:
+            self.toggleReading(True)
+            #self.task_mgr.remove("DataDisplayTask")
+        return task.cont
+
+    # button command functions come next
+    def toggleReading(self, force_state): # force_state
         '''
-        allows to pause the reading of the precomputed simulation
+        switches between play and pause mode when reading the precomputed simulation
         '''
-        self.is_paused = not(self.is_paused)
+        if force_state: # override to paused state
+            self.is_paused = True
+            self.Gui2d.pause_button.hide()
+            self.Gui2d.play_button.show()
+        else:
+            if self.FramePosition >= PRESIMULATION_TIME-1: # security (in case the user is dumb enough to click play at the end)
+                return 1 # unused
+            if self.is_paused:
+                self.Gui2d.play_button.hide()
+                self.Gui2d.pause_button.show()
+            else:
+                self.Gui2d.pause_button.hide()
+                self.Gui2d.play_button.show()
+            self.is_paused = not(self.is_paused)
         return None
+    def changeSpeed(self,value):
+        '''
+        changes the self.reading_speed variable
+        '''
+        self.FramePosition = int(self.FramePosition) # when pressing ff and slower buttons, this helps
+        self.reading_speed *= value
 
 def warn(content,description):
     print("[Warning]: "+content+"\n"+description)
