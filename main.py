@@ -24,10 +24,14 @@ except:
 try:
     error = 0
     from skybox import skybox #e0
-    error+=1
+    error += 1
     from pandaGui_toolBox import loadingscreen #e1
-    error+=1
+    error += 1
     from SaveTools import SaveSim
+    error += 1
+    from orbital_cam import OrbitalCamera
+    error += 1
+    from mouse_tracking import MouseTracker
 except:
     print("[WARNING]: Some internal program files seem to be missing\n","error code:",error)
     sys.exit(0)
@@ -190,7 +194,7 @@ class PhysicalArray:
                     colorScaleBuffer[x].append((1,1,1,1))
 
         if not(TOGGLE_LIVE_DISPLAY):
-            return colorScaleBuffer # return the list so that we can get save it into the SaveSim object 
+            return colorScaleBuffer # return the list so we can get to save it into the SaveSim object 
         else:
             return None
 
@@ -395,11 +399,15 @@ class MainApp(ShowBase):
         
         
         # camera, comment this part if you want default panda3d control
+        self.OCam = OrbitalCamera(self)
+        self.MouseBot = MouseTracker(self)
+        '''
         empirical1 = (12.7973, 3.6711, 4.36375)
         size = self.ground.GetSize()
         bufferMesh = self.ground.content[floor(size[0]/2)][floor(size[1]/2)].model
         self.camera.setPos(empirical1)
         self.camera.lookAt(bufferMesh.getPos())
+        '''
         self.disableMouse()
         
         '''
