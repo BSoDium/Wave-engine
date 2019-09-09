@@ -1,14 +1,14 @@
 # Wave Engine V0.4
 # Dependencies : pandaGui_toolBox.py, SaveTools.py
-# Philippe NJ - 2019 - l3alr0g (github)
-# this code is open source, and can therefore be copied, modified and published without any special authorizations fro the author
+# Philippe NJ - 2019 -2020 - l3alr0g (github)
+# this code is open source, and can therefore be copied, modified and published without any special authorizations from the author
 # it is however mandatory to include this short text in the credits of any software which uses it
 
 
-# It is recommended to use a mouse
+# It is recommended to use a mouse when using this software
 
 try:
-    import os,ctypes,sys,random,time # I definitely won't use those
+    import os,ctypes,sys,random,time # I definitely won't use those (sry about that)
     from math import *
     from copy import deepcopy
 except:
@@ -58,6 +58,12 @@ if adv_Gfx:
 
 MAINDIR = Filename.from_os_specific(os.getcwd())
 
+'''
+PARAMETER VARIABLES: feel free to modify the following variables if you know what they refer to.
+If you don't, please read the readme.md file (or the wiki, at this point I'm not sure if I will create one)
+changing those will only affect the simulation results, not the algorithm itself
+'''
+
 RIGIDCONST = 4
 TIMESCALE = 0.01
 FRICTIONCONST = 0.98 # 0.98 = Pizza dough, 0.90 = slow mo kevlar, 0.99 is too high, there is a major risk of structural instability
@@ -69,7 +75,12 @@ HOLDING_FRAME = True # this defines whether there is a stable frame holding the 
 
 
 TOGGLE_LIVE_DISPLAY = False # when switched off, the calculation process isn't rendered in 3d, and only returns a list of positions, which are transfered to the panda3d engine later, without doing the maths
-PRESIMULATION_TIME = 200
+PRESIMULATION_TIME = 200 # amount of presimulated frames
+
+'''
+end of parameter variables
+'''
+
 class VirtualMeshAttribute: # used during non rendered calculations
     def __init__(self):
         self.position = None
