@@ -37,5 +37,3 @@ with their corresponding version (top left corner)
 ![](WaveSim_screenshot02.png)
 
 - **Beta 0.1** changelog: added `PhysicalArray` and `Harmosc` classes, wave mechanics are still very buggy; the algorithm crashes frequently
-
-![](WaveSim_screenshot01.png)
