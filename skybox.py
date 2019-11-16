@@ -1,7 +1,7 @@
 import os,sys
 from panda3d.core import *
 
-# this routines are trivial and won't be commented
+# these routines are trivial and won't be commented
 MAINDIR=Filename.from_os_specific(os.getcwd())
 class skybox:
     def __init__(self,RenderTemplate):

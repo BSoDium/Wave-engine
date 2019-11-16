@@ -338,7 +338,9 @@ class MainApp(ShowBase):
             self.Gui2d = loadingscreen()
             self.Saved = SaveSim()
 
-        # vars
+        '''
+        the following array definition defines the amount of blocks used
+        '''
         self.ground = PhysicalArray(21,21,True)
 
 
@@ -348,7 +350,7 @@ class MainApp(ShowBase):
         '''
         # --> here are some examples
         #self.ground.toggle_gravity(9.81)
-        self.ground.single_override("sine6",10,10,-2) 
+        self.ground.single_override("sine6",5,10,-2) 
         #self.ground.column_override("sine8",0,-1)
         #self.ground.line_override("controlled",0,-1)
         '''
