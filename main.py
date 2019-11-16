@@ -412,7 +412,10 @@ class MainApp(ShowBase):
         
         
         # camera, comment this part if you want default panda3d control
-        self.OCam = OrbitalCamera(self)
+        tempX = int(len(self.ground.content)/2 - 1)
+        tempY = int(len(self.ground.content[tempX])/2 - 1)
+        focusedPoint = self.ground.content[tempX][tempY].model.getPos()
+        self.OCam = OrbitalCamera(self,focusedPoint)
         self.MouseBot = MouseTracker(self)
         '''
         empirical1 = (12.7973, 3.6711, 4.36375)
