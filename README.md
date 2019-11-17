@@ -30,10 +30,3 @@ with their corresponding version (top left corner)
   This version is considered as stable
 
 ![](WaveSim_screenshot04.png)
-
-- **Beta 0.2** changelog (0.3 was never published): fixed live simulation, main mechanics work, needs some optimization though
-
-![](WaveSim_screenshot03.png)
-![](WaveSim_screenshot02.png)
-
-- **Beta 0.1** changelog: added `PhysicalArray` and `Harmosc` classes, wave mechanics are still very buggy; the algorithm crashes frequently
