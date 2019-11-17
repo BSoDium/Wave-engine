@@ -75,7 +75,7 @@ HOLDING_FRAME = True # this defines whether there is a stable frame holding the 
 
 
 TOGGLE_LIVE_DISPLAY = False # when switched off, the calculation process isn't rendered in 3d, and only returns a list of positions, which are transfered to the panda3d engine later, without doing the maths
-PRESIMULATION_TIME = 200 # amount of presimulated frames
+PRESIMULATION_TIME = 400 # amount of presimulated frames
 
 '''
 end of parameter variables
@@ -87,7 +87,8 @@ class VirtualMeshAttribute: # used during non rendered calculations
         self.Hpr = (0,0,0)
         self.scale = None
         self.color_scale = None
-    def __copy__(self):
+
+    def copy(self): # for debugging purposes only (might turn out to be useful later idk)
         return VirtualMeshAttribute(position = self.position, Hpr = self.Hpr, scale = self.scale)
 
     def setPos(self,pos): # for tuple position entries only !!!
@@ -152,9 +153,10 @@ class PhysicalArray:
             self.create_buffer(self.content)
             for i in range(len(self.content)):
                 for j in range(len(self.content[i])):
-                    AppliedForce = self.scan_neighbors(i,j,self.content)
-                    PositionalData = self.get_next_pos(AppliedForce,(i,j))
-                    self.write_buffer((i,j),PositionalData)
+                    if self.content[i][j].movable: # I forgot this line at first and it took me three months to figure out what was wrong 
+                        AppliedForce = self.scan_neighbors(i,j,self.content)
+                        PositionalData = self.get_next_pos(AppliedForce,(i,j))
+                        self.write_buffer((i,j),PositionalData)
             
             if not(TOGGLE_LIVE_DISPLAY):
                 colorScaleBuffer = self.blit() # update and save (preloading process)
@@ -201,7 +203,7 @@ class PhysicalArray:
                         # save the color for non simulated blocks (controlled by defined law)
                         colorScaleBuffer[x].append((1,1,1,1))
                 
-                elif not(self.content[x][y].movable) and not(TOGGLE_LIVE_DISPLAY) and not(self.content[x][y].law): # last one just to be sure
+                elif not(self.content[x][y].movable) and not(TOGGLE_LIVE_DISPLAY) and not(self.content[x][y].law): # last one just in case
                     colorScaleBuffer[x].append((1,1,1,1))
 
         if not(TOGGLE_LIVE_DISPLAY):
@@ -350,9 +352,9 @@ class MainApp(ShowBase):
         '''
         # --> here are some examples
         #self.ground.toggle_gravity(9.81)
-        self.ground.single_override("sine6",5,10,-2) 
+        #self.ground.single_override("sine6",5,10,-2) 
         #self.ground.column_override("sine8",0,-1)
-        #self.ground.line_override("controlled",0,-1)
+        self.ground.line_override("controlled",0,-1)
         '''
         ################################################################
         Using the override commands is pretty simple:
@@ -469,7 +471,7 @@ class MainApp(ShowBase):
         return None
 
     
-    def PostRendering(self,task):
+    def PostRendering(self,task): # this is the main loop during the post rendering process
         try:
             self.Saved.read(self.FramePosition)
         except:
