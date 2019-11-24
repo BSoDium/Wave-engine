@@ -21,20 +21,13 @@ try:
 except:
     print("[WARNING]: The panda3d engine is missing\n","Try installing it using 'pip install panda3d'")
     sys.exit(0)
-try:
-    error = 0
-    from skybox import skybox #e0
-    error += 1
-    from pandaGui_toolBox import loadingscreen #e1
-    error += 1
-    from SaveTools import SaveSim
-    error += 1
-    from orbital_cam import OrbitalCamera
-    error += 1
-    from mouse_tracking import MouseTracker
-except:
-    print("[WARNING]: Some internal program files seem to be missing\n","error code:",error)
-    sys.exit(0)
+
+from skybox import skybox #e0
+from pandaGui_toolBox import loadingscreen #e1
+from SaveTools import SaveSim
+from orbital_cam import OrbitalCamera
+from mouse_tracking import MouseTracker
+from CommandLine import Console
 
 # fullscreen routine
 FULLSCREEN = False
@@ -52,7 +45,7 @@ loadPrcFileData('','window-title WaveEngine')
 adv_Gfx = True # turn off if your computer can't handle it
 if adv_Gfx:
     loadPrcFileData('','framebuffer-multisample 1')
-    loadPrcFileData('','multisamples 2') 
+    loadPrcFileData('','multisamples 2')
 
 # flat-shading is enabled
 
@@ -74,8 +67,9 @@ GLOBALMASS = 0.1 # kg USI
 HOLDING_FRAME = True # this defines whether there is a stable frame holding the moving surface or not. Try turning it off to see what happens ;)
 
 
-TOGGLE_LIVE_DISPLAY = False # when switched off, the calculation process isn't rendered in 3d, and only returns a list of positions, which are transfered to the panda3d engine later, without doing the maths
-PRESIMULATION_TIME = 400 # amount of presimulated frames
+LIVE_DISPLAY = False # when switched off, the calculation process isn't rendered in 3d, and only returns a list of positions, which are transfered to the panda3d engine later, without doing the maths
+PRESIMULATION_TIME = 50 # amount of presimulated frames
+
 
 '''
 end of parameter variables
@@ -118,7 +112,7 @@ class harmosc: # oscillateur harmonique
         self.mass = GLOBALMASS 
         self.falling = (False,None) # by default, gravity is disabled (None here stands for the acceleration applied to the block, undefined here)
         self.speed = 0 # speed over Z axis only, obviously
-        if TOGGLE_LIVE_DISPLAY:
+        if LIVE_DISPLAY:
             self.model = loader.loadModel(str(MAINDIR)+"/wave_part_small.egg")
             self.model.reparentTo(render)
         else:
@@ -158,7 +152,7 @@ class PhysicalArray:
                         PositionalData = self.get_next_pos(AppliedForce,(i,j))
                         self.write_buffer((i,j),PositionalData)
             
-            if not(TOGGLE_LIVE_DISPLAY):
+            if not(LIVE_DISPLAY):
                 colorScaleBuffer = self.blit() # update and save (preloading process)
                 App.Saved.AddFrameData(self.BufferData,colorScaleBuffer)
             else:
@@ -175,11 +169,11 @@ class PhysicalArray:
         return None
     
     def blit(self):
-        if not(TOGGLE_LIVE_DISPLAY):
+        if not(LIVE_DISPLAY):
             colorScaleBuffer = [] # this list gives us the color state of each cube, every frame
         for x in range(len(self.BufferData)):
 
-            if not(TOGGLE_LIVE_DISPLAY):
+            if not(LIVE_DISPLAY):
                 colorScaleBuffer.append([])
             
             for y in range(len(self.BufferData[x])):
@@ -190,7 +184,7 @@ class PhysicalArray:
                     black_red = (tempSpeed,0.2,0.2,1)
                     self.content[x][y].model.setColorScale(black_red)
                     self.apply_friction((x,y))
-                    if not(TOGGLE_LIVE_DISPLAY):
+                    if not(LIVE_DISPLAY):
                         # save the color to the buffer
                         colorScaleBuffer[x].append(black_red)
 
@@ -199,14 +193,14 @@ class PhysicalArray:
                     bufferPos = self.content[x][y].model.getPos()
                     self.content[x][y].model.setPos((bufferPos[0],bufferPos[1],self.content[x][y].law(self.content[x][y].law_counter)))
                     self.content[x][y].law_counter+=TIMESCALE*LocalSpeed
-                    if not(TOGGLE_LIVE_DISPLAY):
+                    if not(LIVE_DISPLAY):
                         # save the color for non simulated blocks (controlled by defined law)
                         colorScaleBuffer[x].append((1,1,1,1))
                 
-                elif not(self.content[x][y].movable) and not(TOGGLE_LIVE_DISPLAY) and not(self.content[x][y].law): # last one just in case
+                elif not(self.content[x][y].movable) and not(LIVE_DISPLAY) and not(self.content[x][y].law): # last one just in case
                     colorScaleBuffer[x].append((1,1,1,1))
 
-        if not(TOGGLE_LIVE_DISPLAY):
+        if not(LIVE_DISPLAY):
             return colorScaleBuffer # return the list so we can get to save it into the SaveSim object 
         else:
             return None
@@ -332,11 +326,13 @@ class PhysicalArray:
 
 
 
+
+
 class MainApp(ShowBase):
     def __init__(self):
         super().__init__(self)
 
-        if not(TOGGLE_LIVE_DISPLAY):
+        if not(LIVE_DISPLAY):
             self.Gui2d = loadingscreen()
             self.Saved = SaveSim()
 
@@ -345,14 +341,13 @@ class MainApp(ShowBase):
         '''
         self.ground = PhysicalArray(21,21,True)
 
-
         '''
         insert all the override commands between the two hashtaged lines
         ################################################################
         '''
         # --> here are some examples
         #self.ground.toggle_gravity(9.81)
-        #self.ground.single_override("sine6",5,10,-2) 
+        #self.ground.single_override("sine4",10,10,-2)
         #self.ground.column_override("sine8",0,-1)
         self.ground.line_override("controlled",0,-1)
         '''
@@ -380,8 +375,10 @@ class MainApp(ShowBase):
 
         # key bindings
         self.accept('escape',sys.exit,[0])
-        if TOGGLE_LIVE_DISPLAY:
+        if LIVE_DISPLAY:
             self.accept('space',self.ground.toggle)
+        else:
+            self.accept('space',self.toggleReading,[False])
         self.accept('g',self.ground.toggle_gravity,[9.81])
 
         # task manager
@@ -419,29 +416,21 @@ class MainApp(ShowBase):
         focusedPoint = self.ground.content[tempX][tempY].model.getPos()
         self.OCam = OrbitalCamera(self,focusedPoint)
         self.MouseBot = MouseTracker(self)
-        '''
-        empirical1 = (12.7973, 3.6711, 4.36375)
-        size = self.ground.GetSize()
-        bufferMesh = self.ground.content[floor(size[0]/2)][floor(size[1]/2)].model
-        self.camera.setPos(empirical1)
-        self.camera.lookAt(bufferMesh.getPos())
-        '''
         self.disableMouse()
         
-        '''
+        
         # skybox setup (disabled because it is completely useless in means of simulation. It makes the developer happy tho)
-        environment = skybox(render)
-        '''
+        #environment = skybox(render)
 
     def mainloop(self,task): #  *ravioli architecture intensifies*
-        if TOGGLE_LIVE_DISPLAY:
+        if LIVE_DISPLAY:
             self.ground.update()
             return task.cont
-        elif task.frame < PRESIMULATION_TIME and not(TOGGLE_LIVE_DISPLAY):
+        elif task.frame < PRESIMULATION_TIME and not(LIVE_DISPLAY):
             self.ground.update()
             self.Gui2d.update(task.frame/PRESIMULATION_TIME)
             return task.cont
-        elif task.frame == PRESIMULATION_TIME and not(TOGGLE_LIVE_DISPLAY): 
+        elif task.frame == PRESIMULATION_TIME and not(LIVE_DISPLAY): 
 
             user32 = ctypes.windll.user32
             user32.SetProcessDPIAware()
@@ -468,6 +457,11 @@ class MainApp(ShowBase):
         self.is_paused = True # the post rendered simulation is initialized by default as paused
         self.reading_speed = 1 # usefull if we want to implement a fast forward/ slow mo button
         self.Gui2d.CreateSimReadingHUD(App, PRESIMULATION_TIME)
+        # break the code into pieces so you can actually read it
+
+        commands = {"restart":self.__init__}
+        self.UserConsole = Console()
+        self.UserConsole.create(App,render,commands)
         return None
 
     

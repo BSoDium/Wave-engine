@@ -17,6 +17,7 @@ class loadingscreen:
         self.loading_bar_bg = OnscreenImage(image = str(MAINDIR)+"/files/loading_bar_bg.png", pos = (0,0,-0.7), scale = (0.8745,1,0.1))
         self.loading_bar_bg.setTransparency(TransparencyAttrib.MAlpha)
         return None
+
     def update(self,progress):
         try:
             assert progress <= 1
@@ -94,6 +95,7 @@ class loadingscreen:
         else:
             self.play_button.hide()
         return None
+        
     def HUDcom(self,CommandBase,current_state,max_state):
         '''
         whenever this command is executed, the position of the slider is updated, and sent to the reading routine
