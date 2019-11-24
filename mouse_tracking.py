@@ -8,6 +8,8 @@ class MouseTracker:
         self.keyMap = [["mouse2",False]]
         base.accept("mouse2",self.activate,[0])
         base.accept("mouse2-up",self.deactivate,[0])
+        base.accept("mouse3",self.activate,[0])
+        base.accept("mouse3-up",self.deactivate,[0])
         base.task_mgr.add(self.CheckLoop,"MouseUpdateLoop")
         return None
 

@@ -20,7 +20,7 @@ class SaveSim:
         '''
         Creates the models and components of the scene that will be used later by the read() function
         '''
-        self.content = [[loader.loadModel(str(MAINDIR)+"/wave_part_small.egg") for x in range(self.ArrayDim[1])] for y in range(self.ArrayDim[0])]
+        self.content = [[loader.loadModel(str(MAINDIR)+"/files/wave_part_small.egg") for x in range(self.ArrayDim[1])] for y in range(self.ArrayDim[0])]
         for i in self.content:
             for j in i:
                 j.reparentTo(renderBuffer)

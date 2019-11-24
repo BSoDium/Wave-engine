@@ -29,4 +29,4 @@ with their corresponding version (top left corner)
 
   This version is considered as stable
 
-![](WaveSim_screenshot04.png)
+![](Screenshots\WaveSim_screenshot04.png)

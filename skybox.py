@@ -7,7 +7,7 @@ class skybox:
     def __init__(self,RenderTemplate):
         try:
             self.pic_path=str(MAINDIR)+"/Skybox/sky_#.png"
-            self.mesh_path=str(MAINDIR)+"/InvertedSphere.egg"
+            self.mesh_path=str(MAINDIR)+"/files/InvertedSphere.egg"
             self.isphere=loader.loadModel(self.mesh_path) #loading skybox structure
             self.isphere.setTwoSided(True)
             self.tex=loader.loadCubeMap(self.pic_path)

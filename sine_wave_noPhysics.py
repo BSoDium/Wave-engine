@@ -56,7 +56,7 @@ class MainApp(ShowBase):
         # variables
         self.frame_counter = 0 
         lenght=130
-        self.sine = wave(str(MAINDIR)+"/wave_part.egg",lenght)
+        self.sine = wave(str(MAINDIR)+"/files/wave_part.egg",lenght)
 
         '''
         # axis
@@ -94,7 +94,7 @@ class MainApp(ShowBase):
         self.setBackgroundColor(0,0,0)
 
         # draw light indicator:
-        self.light_bulb=self.loader.loadModel(str(MAINDIR)+"/light_bulb.egg")
+        self.light_bulb=self.loader.loadModel(str(MAINDIR)+"/files/light_bulb.egg")
         bufferPos=plight.getPos()
         self.light_bulb.setPos(bufferPos)
         self.light_bulb.setScale(0.25,0.25,0.25)

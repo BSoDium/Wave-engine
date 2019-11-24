@@ -113,7 +113,7 @@ class harmosc: # oscillateur harmonique
         self.falling = (False,None) # by default, gravity is disabled (None here stands for the acceleration applied to the block, undefined here)
         self.speed = 0 # speed over Z axis only, obviously
         if LIVE_DISPLAY:
-            self.model = loader.loadModel(str(MAINDIR)+"/wave_part_small.egg")
+            self.model = loader.loadModel(str(MAINDIR)+"/files/wave_part_small.egg")
             self.model.reparentTo(render)
         else:
             self.model = VirtualMeshAttribute()
@@ -271,6 +271,9 @@ class PhysicalArray:
         return None
 
     def single_override(self,state,i,j,new_Z_pos):
+        '''
+        does a single override
+        '''
         try:
             if state == "initial":
                 bufferPos = tuple(self.content[i][j].model.getPos())
@@ -287,6 +290,7 @@ class PhysicalArray:
         return None
 
     def line_override(self,state,i,new_Z_pos):
+        """Does a line override (rtfm)"""
         try:
             if state == "initial":
                 bufferPos = [tuple(a.model.getPos()) for a in self.content[i]]
@@ -307,6 +311,9 @@ class PhysicalArray:
         
 
     def column_override(self,state,j,new_Z_pos):
+        '''
+        does a column override
+        '''
         try:
             if state == "initial":
                 bufferPos = [tuple(a[j].model.getPos()) for a in self.content]
@@ -397,7 +404,7 @@ class MainApp(ShowBase):
         render.setLight(plight)
 
         # draw light indicator:
-        self.light_bulb=self.loader.loadModel(str(MAINDIR)+"/light_bulb.egg")
+        self.light_bulb=self.loader.loadModel(str(MAINDIR)+"/files/light_bulb.egg")
         bufferPos=plight.getPos()
         self.light_bulb.setPos(bufferPos)
         self.light_bulb.setScale(0.25,0.25,0.25)
@@ -459,8 +466,13 @@ class MainApp(ShowBase):
         self.Gui2d.CreateSimReadingHUD(App, PRESIMULATION_TIME)
         # break the code into pieces so you can actually read it
 
-        commands = {"restart":self.__init__}
         self.UserConsole = Console()
+        commands = {"restart":self.__init__,
+                        "line_override":self.ground.line_override,
+                        "column_override":self.ground.column_override,
+                        "single_override":self.ground.single_override,
+                        "help":self.UserConsole.helper
+                        }
         self.UserConsole.create(App,render,commands)
         return None
 
@@ -515,7 +527,7 @@ class MainApp(ShowBase):
         self.reading_speed *= value
 
 def warn(content,description):
-    print("[Warning]: "+content+"\n"+description)
+    self.UserConsole.ConsoleOutput("[Warning]: "+content+"\n"+description)
     return None
 
 def sine(x):
