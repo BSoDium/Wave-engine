@@ -51,35 +51,39 @@ class loadingscreen:
         self.play_button = DirectButton(geom = (tempMap.find('**/play'),
                                                 tempMap.find('**/play_on'),
                                                 tempMap.find('**/play_out')),
-                                                pos = (0,0,-0.85),
+                                                pos = (1.75,1000,0.2),
                                                 command = CommandBase.toggleReading,
                                                 extraArgs = [False],
                                                 frameColor = (0,0,0,0),
-                                                scale = (0.14,1,0.14))
+                                                scale = (0.14,1,0.14),
+                                                parent = CommandBase.a2dBottomLeft)
         self.pause_button = DirectButton(geom = (tempMap2.find('**/pause'),
                                                 tempMap2.find('**/pause_on'),
                                                 tempMap2.find('**/pause_out')),
-                                                pos = (0,0,-0.85),
+                                                pos = (1.75,1000,0.2),
                                                 command = CommandBase.toggleReading,
                                                 extraArgs = [False],
                                                 frameColor = (0,0,0,0),
-                                                scale = (0.14,1,0.14))
+                                                scale = (0.14,1,0.14),
+                                                parent = CommandBase.a2dBottomLeft)
         self.forward_button = DirectButton(geom = (tempMap3.find('**/fast_forward'),
                                                     tempMap3.find('**/fast_forward_on'),
                                                     tempMap3.find('**/fast_forward_out')),
-                                                    pos = (0.2,0,-0.85),
+                                                    pos = (1.9,1000,0.2),
                                                     command = CommandBase.changeSpeed,
                                                     extraArgs = [2],
                                                     frameColor = (0,0,0,0),
-                                                    scale = (0.11,1,0.11))
+                                                    scale = (0.11,1,0.11),
+                                                    parent = CommandBase.a2dBottomLeft)
         self.slower_button = DirectButton(geom = (tempMap4.find('**/slower'),
                                                     tempMap4.find('**/slower_on'),
                                                     tempMap4.find('**/slower_out')),
-                                                    pos = (-0.2,0,-0.85),
+                                                    pos = (1.6,1000,0.2),
                                                     command = CommandBase.changeSpeed,
                                                     extraArgs = [0.5],
                                                     frameColor = (0,0,0,0),
-                                                    scale = (0.11,1,0.11))
+                                                    scale = (0.11,1,0.11),
+                                                    parent = CommandBase.a2dBottomLeft)
         sliderMap = loader.loadModel(str(MAINDIR)+"/files/slider.egg")
         self.stateSlider = DirectSlider(thumb_geom = (tempMap5.find('**/thumb'),
                                                 tempMap5.find('**/thumb_on'),
@@ -88,8 +92,9 @@ class loadingscreen:
                                         frameSize = (-20, 20, -0.2, 0.2),
                                         range = (0,max_frame-1),
                                         thumb_frameColor = (0,0,0,0),
-                                        pos = (0,0,-0.7),
-                                        value = 0)
+                                        pos = (1.8,1000,0.3),
+                                        value = 0,
+                                        parent = CommandBase.a2dBottomLeft)
         if CommandBase.is_paused: # check the initial state and display the correct button accordingly
             self.pause_button.hide()
         else:

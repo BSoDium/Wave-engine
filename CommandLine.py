@@ -12,13 +12,14 @@ class Console:
         return None
         
     def create(self,base,renderBase,CommandDictionary):
+        self.base = base
         self.CommandDictionary = CommandDictionary #copy for further use in other methods
         self.hidden = False
         self.textscale = 0.04
-        self.Lines = 47
-        self.background = OnscreenImage(image = str(MAINDIR)+"/files/bg.png",pos = (-1.14,0,0))
+        self.Lines = 43
+        self.background = OnscreenImage(image = str(MAINDIR)+"/files/bg.png",pos = (0.65,0,1), parent = self.base.a2dBottomLeft)
         self.background.setTransparency(TransparencyAttrib.MAlpha)
-        self.SavedLines = [OnscreenText(text = '', pos = (-1.76, -0.9 + x*self.textscale), scale = self.textscale, align = TextNode.ALeft, fg = (1,1,1,1)) for x in range(self.Lines)]
+        self.SavedLines = [OnscreenText(text = '', pos = (0.02, 0.1 + x*1.1*self.textscale), scale = self.textscale, align = TextNode.ALeft, fg = (1,1,1,1), parent = self.base.a2dBottomLeft) for x in range(self.Lines)]
         self.loadConsoleEntry()
         self.commands = CommandDictionary
         #self.entry.reparent_to(App)
@@ -26,8 +27,17 @@ class Console:
         self.toggle(base) # initialize as hidden
         return None
     
-    def loadConsoleEntry(self):
-        self.entry = DirectEntry(scale=self.textscale, frameColor=(1,1,1,1), pos = (-1.76, 0, -0.97),overflow = 1,command=self.ConvertToFunction,initialText="", numLines = 1, focus=True, width = 40)
+    def loadConsoleEntry(self): #-1.76, 0, -0.97
+        self.entry = DirectEntry(scale=self.textscale,
+                                    frameColor=(1,1,1,1),
+                                    pos = (0.025, 0, 0.03),
+                                    overflow = 1,
+                                    command=self.ConvertToFunction,
+                                    initialText="",
+                                    numLines = 1,
+                                    focus=True,
+                                    width = 40,
+                                    parent = self.base.a2dBottomLeft)
         return None
     
     def toggle(self,base):
