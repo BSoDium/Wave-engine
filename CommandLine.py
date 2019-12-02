@@ -11,17 +11,17 @@ class Console:
     def __init__(self):
         return None
         
-    def create(self,base,renderBase,CommandDictionary):
-        self.base = base
-        self.CommandDictionary = CommandDictionary #copy for further use in other methods
+    def create(self,renderBase,CommandDictionary):
+        base.a2dBottomLeft.set_bin('background', 123) # avoid drawing order conflict
+        self.CommandDictionary = {**CommandDictionary,**{"help":self.helper,"usage":self.showCommands}} #copy for further use in other methods
         self.hidden = False
         self.textscale = 0.04
         self.Lines = 43
-        self.background = OnscreenImage(image = str(MAINDIR)+"/files/bg.png",pos = (0.65,0,1), parent = self.base.a2dBottomLeft)
+        self.background = OnscreenImage(image = str(MAINDIR)+"/files/bg.png",pos = (0.65,0,1), parent = base.a2dBottomLeft)
         self.background.setTransparency(TransparencyAttrib.MAlpha)
-        self.SavedLines = [OnscreenText(text = '', pos = (0.02, 0.1 + x*1.1*self.textscale), scale = self.textscale, align = TextNode.ALeft, fg = (1,1,1,1), parent = self.base.a2dBottomLeft) for x in range(self.Lines)]
+        self.SavedLines = [OnscreenText(text = '', pos = (0.02, 0.1 + x*1.1*self.textscale), scale = self.textscale, align = TextNode.ALeft, fg = (1,1,1,1), parent = base.a2dBottomLeft) for x in range(self.Lines)]
         self.loadConsoleEntry()
-        self.commands = CommandDictionary
+        self.commands = self.CommandDictionary
         #self.entry.reparent_to(App)
         base.accept('f1',self.toggle,[base])
         self.toggle(base) # initialize as hidden
@@ -29,7 +29,8 @@ class Console:
     
     def loadConsoleEntry(self): #-1.76, 0, -0.97
         self.entry = DirectEntry(scale=self.textscale,
-                                    frameColor=(1,1,1,1),
+                                    frameColor=(0,0,0,1),
+                                    text_fg = (1,1,1,1),
                                     pos = (0.025, 0, 0.03),
                                     overflow = 1,
                                     command=self.ConvertToFunction,
@@ -37,7 +38,7 @@ class Console:
                                     numLines = 1,
                                     focus=True,
                                     width = 40,
-                                    parent = self.base.a2dBottomLeft)
+                                    parent = base.a2dBottomLeft)
         return None
     
     def toggle(self,base):
@@ -61,7 +62,9 @@ class Console:
     def ConvertToFunction(self,data):
         self.entry.destroy()
         self.loadConsoleEntry()
-        self.ConsoleOutput(">> "+data)
+        self.ConsoleOutput(" ")
+        self.ConsoleOutput(str(MAINDIR)+">  "+data)
+        self.ConsoleOutput(" ")
         Buffer = [""]
         for x in range(len(data)): # I know the way I did this sucks but I didn't want to think a lot
             if data[x] == "(":
@@ -114,7 +117,7 @@ class Console:
     
     def ConsoleOutput(self,output):
         #maxsize = self.entry['width']
-        maxsize = 85
+        maxsize = 73
         discretized = [output[i:i+maxsize] for i in range(0,len(output),maxsize)]
         for i in discretized:
             for x in range(self.Lines-1,0,-1):
@@ -122,9 +125,28 @@ class Console:
             self.SavedLines[0].text = i
         return None
     
-    def helper(self):
-        self.ConsoleOutput("Help concerning available commands:")
-        for i in self.CommandDictionary:
-            self.ConsoleOutput(str(i))
-            self.ConsoleOutput(str(help(self.CommandDictionary[i])))
+    def helper(self,index):
+        i = self.CommandDictionary[index]
+        self.ConsoleOutput("Help concerning command '"+str(index)+"':")
+        self.ConsoleOutput("    associated function name is "+str(i.__name__))
+        self.ConsoleOutput("Documentation provided: ")
+        doc = self.TextToLine(str(i.__doc__))
+        self.ConsoleOutput("    "+doc)
+        self.ConsoleOutput("Known arguments: ")
+        self.ConsoleOutput("    "+str(i.__code__.co_varnames))
         return None
+    
+    def showCommands(self):
+        self.ConsoleOutput("List of available commands: ")
+        for i in self.CommandDictionary:
+            self.ConsoleOutput("- "+str(i))
+        self.ConsoleOutput(" ")
+        self.ConsoleOutput("Use help(command) for more details on a specific command")
+        return None
+
+    def TextToLine(self,text):
+        try:
+            text = text.replace("\n","")
+        except:
+            pass
+        return text

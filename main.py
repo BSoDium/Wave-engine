@@ -471,9 +471,10 @@ class MainApp(ShowBase):
                         "line_override":self.ground.line_override,
                         "column_override":self.ground.column_override,
                         "single_override":self.ground.single_override,
-                        "help":self.UserConsole.helper
+                        "help":self.UserConsole.helper,
+                        "exit":stop
                         }
-        self.UserConsole.create(App,render,commands)
+        self.UserConsole.create(render,commands)
         return None
 
     
@@ -528,6 +529,10 @@ class MainApp(ShowBase):
 
 def warn(content,description):
     self.UserConsole.ConsoleOutput("[Warning]: "+content+"\n"+description)
+    return None
+
+def stop(state):
+    sys.exit(int(state))
     return None
 
 def sine(x):
