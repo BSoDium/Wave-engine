@@ -105,7 +105,7 @@ class VirtualMeshAttribute: # used during non rendered calculations
     def getPos(self):
         return self.position
 
-class harmosc: # oscillateur harmonique
+class HarmoscNode: # oscillateur harmonique
     def __init__(self,pos,id):
         self.movable = True
         self.law = None
@@ -133,7 +133,7 @@ class PhysicalArray:
         self.is_running=True
         self.LinkedBlocks=DynamicMesh
         InitialZ = 0 # the array starts with all blocks at 0, use the override function to change one of the blocks pos
-        self.content = [[harmosc((BLOCKINTERVAL*GLOBALSCALE*a,BLOCKINTERVAL*GLOBALSCALE*b,InitialZ),(a,b)) for a in range(x)] for b in range(y)]
+        self.content = [[HarmoscNode((BLOCKINTERVAL*GLOBALSCALE*a,BLOCKINTERVAL*GLOBALSCALE*b,InitialZ),(a,b)) for a in range(x)] for b in range(y)]
         return None
 
     def GetSize(self): # actually only used for debugging purposes
@@ -531,10 +531,10 @@ def warn(content,description):
     self.UserConsole.ConsoleOutput("[Warning]: "+content+"\n"+description)
     return None
 
-def stop(state):
-    sys.exit(int(state))
+def stop():
+    finalstate = 0
+    os._exit(finalstate)
     return None
-
 def sine(x):
     return sin(x)
 

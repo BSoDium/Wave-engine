@@ -13,7 +13,7 @@ class Console:
         
     def create(self,renderBase,CommandDictionary):
         base.a2dBottomLeft.set_bin('background', 123) # avoid drawing order conflict
-        self.CommandDictionary = {**CommandDictionary,**{"help":self.helper,"usage":self.showCommands}} #copy for further use in other methods
+        self.CommandDictionary = {**CommandDictionary,**{"usage":self.helper,"help":self.showCommands}} #copy for further use in other methods
         self.hidden = False
         self.textscale = 0.04
         self.Lines = 43
@@ -99,7 +99,7 @@ class Console:
                 try:
                     ChosenCommand()
                 except:
-                    self.ConsoleOutput('This command requires (at least) and argument')
+                    self.ConsoleOutput('This command requires (at least) one argument')
 
         except:
             self.CommandError(Buffer[0])
@@ -141,7 +141,7 @@ class Console:
         for i in self.CommandDictionary:
             self.ConsoleOutput("- "+str(i))
         self.ConsoleOutput(" ")
-        self.ConsoleOutput("Use help(command) for more details on a specific command")
+        self.ConsoleOutput("Use usage(command) for more details on a specific command")
         return None
 
     def TextToLine(self,text):
